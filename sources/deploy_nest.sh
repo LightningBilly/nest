@@ -1,6 +1,9 @@
 #!/bin/bash
 # shellcheck disable=SC2009
 # 查找运行的项目
+export JAVA_HOME="/usr/java/jdk-11.0.6"
+export PATH=.:$JAVA_HOME/bin:$PATH
+
 PID=$(ps -ef | grep java | grep -v grep | grep 'nest.jar' | awk '{print $2}')
 # 拉取代码、编译打包
 cd /data/src/nest || return

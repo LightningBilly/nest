@@ -36,7 +36,7 @@ public class NestApplication {
 		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
 		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
 		// 主程序端口号
-		connector.setPort(80);
+		connector.setPort(7750);
 		// 添加http
 		tomcat.addAdditionalTomcatConnectors(connector);
 		return tomcat;

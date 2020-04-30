@@ -275,9 +275,9 @@ public class AdminService {
 		// 开启 ssl
 		config.setIncludeHttpsPages(true);
 		// 最大抓几个
-		config.setMaxPagesToFetch(Config.CRAWLER_MaxPagesToFetch);
+		config.setMaxPagesToFetch(Config.CRAWLER_MAX_PAGES_TO_FETCH);
 		// 递归深度
-		config.setMaxDepthOfCrawling(Config.CRAWLER_MaxDepthOfCrawling);
+		config.setMaxDepthOfCrawling(Config.CRAWLER_MAX_DEPTH_OF_CRAWLING);
 
 		PageFetcher pageFetcher = new PageFetcher(config);
 		RobotstxtConfig robotstxtConfig = new RobotstxtConfig();

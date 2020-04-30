@@ -49,4 +49,3 @@ JDK 版本：11.0.6
 
 答：需要将 src\main\resources\www.yiyjm.com.jks 换成自己域名的SSL证书，
 同时修改 src\main\resources\application.yml 中的 server: ssl: key-* 的参数值
-

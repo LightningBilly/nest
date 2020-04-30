@@ -38,6 +38,7 @@ mv /data/src/nest/target/nest-*.jar /webroot/packages/nest.jar
 # 启动程序
 echo "启动项目中..."
 nohup nohup java -jar /webroot/packages/nest.jar >/data/weblogs/nest/nest_start.log 2>&1 &
+sleep 10
 echo "项目已启动，打开运行日志"
 tail -256 /data/weblogs/nest/nest_start.log
 cd /data/src/nest/ || return

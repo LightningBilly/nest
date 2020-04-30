@@ -1,6 +1,6 @@
-#server:
-#  #端口号
-#  port: 1175
+server:
+  #端口号
+  port: 1175
 
 spring:
   datasource:

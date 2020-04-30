@@ -8,14 +8,14 @@
         <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>cn.fengyunxiao</groupId>
+    <groupId>com.yiyjm</groupId>
     <artifactId>nest</artifactId>
-    <version>0.0.1</version>
+    <version>0.1.1</version>
     <name>nest</name>
     <description>our small nest</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
     </properties>
 
     <dependencies>

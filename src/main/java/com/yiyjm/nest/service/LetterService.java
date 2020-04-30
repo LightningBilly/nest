@@ -1,10 +1,8 @@
 package com.yiyjm.nest.service;
 
-import java.sql.Timestamp;
-import java.util.List;
-import com.yiyjm.nest.dao.LetterDao;
 import com.yiyjm.nest.config.Config;
 import com.yiyjm.nest.config.JsonResult;
+import com.yiyjm.nest.dao.LetterDao;
 import com.yiyjm.nest.entity.Letter;
 import com.yiyjm.nest.util.XssUtil;
 import org.slf4j.Logger;
@@ -14,21 +12,47 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.util.List;
+
+/**
+ * LetterService
+ *
+ * @author jonny
+ * @date 2020/04/30
+ */
 @Service
 public class LetterService {
+	private static final Logger logger = LoggerFactory.getLogger(LetterService.class);
 	private LetterDao letterDao;
 	private MailService mailService;
-    private static final Logger logger = LoggerFactory.getLogger(LetterService.class);
 
+	/**
+	 * set letter Dao
+	 *
+	 * @param letterDao letter Dao
+	 */
 	@Autowired
 	public void setLetterDao(LetterDao letterDao) {
 		this.letterDao = letterDao;
 	}
+
+	/**
+	 * set mailservice
+	 *
+	 * @param mailService
+	 */
 	@Autowired
 	public void setMailService(MailService mailService) {
 		this.mailService = mailService;
 	}
 
+	/**
+	 * @param lid
+	 * @param number
+	 * @param isRand
+	 * @return {@link List<Letter>}
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Letter> listLetter(Integer lid, Integer number, Boolean isRand) {
 		if (lid == null || lid <= 0) {
@@ -51,7 +75,7 @@ public class LetterService {
 			return letterDao.listByRand(number);
 		} else {
 			// 最后四条留言需要在首页显示，使用频率较高，优先使用缓存，插入新留言或点赞时清除缓存
-			if (lid==Integer.MAX_VALUE && number==4) {
+			if (lid == Integer.MAX_VALUE && number == 4) {
 				if (Config.lastLetter4 != null) {
 					return Config.lastLetter4;
 				}
@@ -63,6 +87,12 @@ public class LetterService {
 		}
 	}
 
+	/**
+	 * @param ip
+	 * @param nickname
+	 * @param content
+	 * @return {@link JsonResult<String>}
+	 */
 	@Transactional(propagation = Propagation.REQUIRED)
 	public JsonResult<String> insertLetter(String ip, String nickname, String content) {
 		JsonResult<String> result = new JsonResult<>();
@@ -98,7 +128,7 @@ public class LetterService {
 			return result.error(-1, "脚印丢了");
 		}
 		content = XssUtil.replaceHtmlToFull(content);
-		if (content.length()>255) {
+		if (content.length() > 255) {
 			content = content.substring(0, 255);
 		}
 
@@ -112,11 +142,14 @@ public class LetterService {
 
 		Config.lastLetter4 = null;
 		// 新线程：发送邮件通知
-		String text = "昵称："+nickname+"；留言内容："+content;
+		String text = "昵称：" + nickname + "；留言内容：" + content;
 		mailService.sendMail("我们的小窝留言", text);
 		return result.ok(null, "留言成功");
 	}
 
+	/**
+	 * @param lid
+	 */
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void zanLetter(int lid) {
 		letterDao.zanLetter(lid);

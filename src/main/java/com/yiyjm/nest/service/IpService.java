@@ -1,43 +1,68 @@
 package com.yiyjm.nest.service;
 
-import java.sql.Timestamp;
-import java.util.*;
-
 import com.yiyjm.nest.config.Config;
-import com.yiyjm.nest.entity.Chart;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.yiyjm.nest.dao.IpDao;
+import com.yiyjm.nest.entity.Chart;
 import com.yiyjm.nest.entity.Ip;
 import com.yiyjm.nest.util.IpUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.util.*;
+
+/**
+ * 知识产权服务
+ *
+ * @author jonny
+ * @date 2020/04/30
+ */
 @Service
 public class IpService {
+	private static final Logger logger = LoggerFactory.getLogger(IpService.class);
 	private IpDao ipDao;
-    private static final Logger logger = LoggerFactory.getLogger(IpService.class);
 
+	/**
+	 * set 知识产权 Dao
+	 *
+	 * @param ipDao 知识产权 Dao
+	 */
 	@Autowired
 	public void setIpDao(IpDao ipDao) {
 		this.ipDao = ipDao;
 	}
 
+	/**
+	 * get 所有page
+	 *
+	 * @return int
+	 */
 	public int getAllPage() {
-		int allpage = Config.ipCount%10==0 ? Config.ipCount/10 : Config.ipCount/10+1;
-		if (allpage < 1) { allpage = 1; }
+		int allpage = Config.ipCount % 10 == 0 ? Config.ipCount / 10 : Config.ipCount / 10 + 1;
+		if (allpage < 1) {
+			allpage = 1;
+		}
 		return allpage;
 	}
 
+	/**
+	 * 总
+	 *
+	 * @return int
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public int total() {
 		return ipDao.total();
 	}
 
 	/**
-	 *  获取统计数据，优先使用缓存，task 中定时清除缓存
+	 * 获取统计数据，优先使用缓存，task 中定时清除缓存
+	 *
+	 * @return {@link Map<String, Object>}
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public synchronized Map<String, Object> chartStatic() {
@@ -103,6 +128,11 @@ public class IpService {
 		return charts;
 	}
 
+	/**
+	 * @param page 页面
+	 * @param per  每
+	 * @return {@link List<Ip>}
+	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Ip> listIp(Integer page, Integer per) {
 		if (page == null) {
@@ -121,14 +151,16 @@ public class IpService {
 			page = 1;
 		}
 
-		return ipDao.listIp((page-1)*per, per);
+		return ipDao.listIp((page - 1) * per, per);
 	}
 
+	/**
+	 * @param ip 知识产权
+	 */
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addIp(String ip) {
 		// 排除本地 ip
 		if (Config.RECORD_IP_IGNORE.contains(ip)) {
-			// logger.info("不记录该ip："+ip);
 			return;
 		}
 

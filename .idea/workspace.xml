@@ -2,7 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2973557-06ba-42e2-9788-f1fcac849224" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/NestApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/NestApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/ConfigI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/ConfigI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/CrawlerCsdn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/CrawlerCsdn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/CrawlerDytt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/CrawlerDytt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/ExceptionHandlerForJson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/ExceptionHandlerForJson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/ExceptionHandlerForPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/ExceptionHandlerForPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/FirstPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/FirstPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/JsonResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/config/JsonResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/BlogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/BlogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/ChatSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/ChatSocketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/IpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/IpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/LetterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/LetterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/ViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/controller/ViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/BlogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/BlogDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/ChatDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/ChatDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/ImageDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/ImageDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/IpDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/IpDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/LetterDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/dao/LetterDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Blog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Blog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Chart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Chat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Ip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Ip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Letter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/entity/Letter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/AdminService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/BlogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/BlogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/ChatService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/ChatService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/IndexService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/IndexService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/IpService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/IpService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/LetterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/LetterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/MailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/service/MailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/task/DataInitListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/task/DataInitListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/task/TimeTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/task/TimeTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/GoogleAuthenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/GoogleAuthenticator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/ImageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/ImageUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/IpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/IpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/Jackson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/Jackson.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/RobotUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/RobotUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/XssUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yiyjm/nest/util/XssUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +53,13 @@
   </component>
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,24 +73,41 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.star.easydoc.view.CommonConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/source" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="NestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="nest" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="cn.fengyunxiao.nest.NestApplication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.yiyjm.nest.NestApplication" />
+      <option name="DEBUG_MODE" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -54,17 +120,61 @@
       <option name="presentableId" value="Default" />
       <updated>1588254356265</updated>
       <workItem from="1588254357913" duration="53000" />
-      <workItem from="1588254426642" duration="869000" />
+      <workItem from="1588254426642" duration="1488000" />
+      <workItem from="1588256158787" duration="2773000" />
+      <workItem from="1588259193040" duration="3215000" />
+      <workItem from="1588262511200" duration="587000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: add gitignore">
+      <created>1588259758646</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588259758646</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: add gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add gitignore" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="341" y="164" key="SettingsEditor" timestamp="1588255507115">
+    <state x="20" y="184" key="#Plugins" timestamp="1588259354583">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="20" y="184" key="#Plugins/0.23.1680.1027@0.23.1680.1027" timestamp="1588259354583" />
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588256301259">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1588255507115" />
+    <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588256301259" />
+    <state x="577" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1588256243342">
+      <screen x="0" y="0" width="1680" height="1050" />
+    </state>
+    <state x="577" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588256243342" />
+    <state x="586" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1588263114099">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="586" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1680.1027@0.23.1680.1027" timestamp="1588263114099" />
+    <state x="0" y="94" key="CommitChangelistDialog2" timestamp="1588259758480">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="0" y="94" key="CommitChangelistDialog2/0.23.1680.1027@0.23.1680.1027" timestamp="1588259758480" />
+    <state x="619" y="104" width="1053" height="849" key="SettingsEditor" timestamp="1588262623882">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1588256310291" />
+    <state x="619" y="104" width="1053" height="849" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1588262623882" />
+    <state x="20" y="276" key="Vcs.Push.Dialog.v2" timestamp="1588259760952">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="20" y="276" key="Vcs.Push.Dialog.v2/0.23.1680.1027@0.23.1680.1027" timestamp="1588259760952" />
+    <state x="619" y="326" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1588263066246">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="619" y="326" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1588263066246" />
   </component>
 </project>

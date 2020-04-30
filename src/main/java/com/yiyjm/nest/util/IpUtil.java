@@ -1,5 +1,12 @@
 package com.yiyjm.nest.util;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.yiyjm.nest.config.Config;
+import com.yiyjm.nest.entity.Ip;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -7,16 +14,22 @@ import java.net.URL;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Scanner;
-import javax.servlet.http.HttpServletRequest;
-import com.yiyjm.nest.config.Config;
-import com.yiyjm.nest.entity.Ip;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import com.fasterxml.jackson.databind.JsonNode;
 
+/**
+ * IpUtil
+ *
+ * @author Jonny.Chang
+ * @date 2020/05/01
+ */
 public class IpUtil {
 	private static final Logger logger = LoggerFactory.getLogger(IpUtil.class);
 
+	/**
+	 * get ip
+	 *
+	 * @param request
+	 * @return {@link String}
+	 */
 	public static String getIp(HttpServletRequest request) {
 		String ip = request.getHeader("x-forwarded-for");
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
@@ -37,6 +50,12 @@ public class IpUtil {
 		return ip;
 	}
 
+	/**
+	 * get ipaddrbyipip
+	 *
+	 * @param ip
+	 * @return {@link Ip}
+	 */
 	public static Ip getIpAddrByIpIp(String ip) {
 		Scanner scanner = null;
 		InputStream inputStream = null;
@@ -67,9 +86,9 @@ public class IpUtil {
 
 			Ip tempip = new Ip();
 			tempip.setIp(ip);
-			tempip.setRegion( split[3] );
-			tempip.setCity( split[5] );
-			tempip.setIsp( split[9] );
+			tempip.setRegion(split[3]);
+			tempip.setCity(split[5]);
+			tempip.setIsp(split[9]);
 
 			return tempip;
 		} catch (Exception e) {
@@ -91,6 +110,12 @@ public class IpUtil {
 		}
 	}
 
+	/**
+	 * get ipaddrbyali
+	 *
+	 * @param ip
+	 * @return {@link Ip}
+	 */
 	public static Ip getIpAddrByAli(String ip) {
 		Scanner scanner = null;
 		InputStream inputStream = null;
@@ -141,7 +166,10 @@ public class IpUtil {
 		}
 	}
 
-	// 判断ip是否8分钟内记录过
+	/**
+	 * @param ip
+	 * @return boolean
+	 */// 判断ip是否8分钟内记录过
 	public static boolean isSafeIp(String ip) {
 		// 从临时黑名单删除5分钟内没有操作过的Ip，这些是安全ip
 		long nowTime = System.currentTimeMillis();
@@ -149,7 +177,7 @@ public class IpUtil {
 		while (iterator.hasNext()) {
 			Entry<String, Long> next = iterator.next();
 			Long oldtime = next.getValue();
-			if (nowTime - oldtime > 480*1000) {
+			if (nowTime - oldtime > 480 * 1000) {
 				iterator.remove();
 			}
 		}

@@ -10,30 +10,46 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
+/**
+ * NestApplication
+ *
+ * @author Jonny.Chang
+ * @date 2020/05/01
+ */
 @SpringBootApplication
 @EnableScheduling
 @EnableTransactionManagement
 public class NestApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(NestApplication.class);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(NestApplication.class);
+	}
 
-    // application.yml 配置了 ssl 后，默认使用 https，加入以下配置，同时支持 http
-    @Bean
-    public ServletWebServerFactory servletContainer() {
-        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
-        Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
-        connector.setPort(80);
-        tomcat.addAdditionalTomcatConnectors(connector); // 添加http
-        return tomcat;
-    }
 
-    // 该配置激活 http的ws 和 https的wss，支持 websockt 聊天
-    @Bean
-    public ServerEndpointExporter serverEndpointExporter() {
-        return new ServerEndpointExporter();
-    }
+	/**
+	 * application.yml 配置了 ssl 后，默认使用 https，加入以下配置，同时支持 http
+	 *
+	 * @return {@link ServletWebServerFactory}
+	 */
+	@Bean
+	public ServletWebServerFactory servletContainer() {
+		TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+		Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+		connector.setPort(80);
+		// 添加http
+		tomcat.addAdditionalTomcatConnectors(connector);
+		return tomcat;
+	}
+
+	/**
+	 * 该配置激活 http的ws 和 https的wss，支持 websockt 聊天
+	 *
+	 * @return {@link ServerEndpointExporter}
+	 */
+	@Bean
+	public ServerEndpointExporter serverEndpointExporter() {
+		return new ServerEndpointExporter();
+	}
 
 }
 

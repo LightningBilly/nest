@@ -1,29 +1,31 @@
 package com.yiyjm.nest.service;
 
-import java.io.IOException;
-import java.sql.Timestamp;
-import java.util.*;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yiyjm.nest.config.Config;
-import com.yiyjm.nest.util.Jackson;
-import com.yiyjm.nest.util.XssUtil;
 import com.yiyjm.nest.dao.ChatDao;
+import com.yiyjm.nest.entity.Chat;
+import com.yiyjm.nest.util.Jackson;
+import com.yiyjm.nest.util.RobotUtil;
+import com.yiyjm.nest.util.XssUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.yiyjm.nest.entity.Chat;
-import com.yiyjm.nest.util.RobotUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.websocket.Session;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ChatService {
-	private ChatDao chatDao;
 	private static final Logger logger = LoggerFactory.getLogger(ChatService.class);
+	private ChatDao chatDao;
 
 	@Autowired
 	public void setChatDao(ChatDao chatDao) {
@@ -39,14 +41,14 @@ public class ChatService {
 			logger.error("聊天string转化为object失败。");
 			return null;
 		}
-		if (message.getContent()==null || message.getContent().trim().equals("")) {
+		if (message.getContent() == null || message.getContent().trim().equals("")) {
 			return null;
 		}
 		message.setContent(XssUtil.replaceHtmlToFull(message.getContent()));
-		if (message.getContent().length()>512) {
-			message.setContent( message.getContent().substring(0, 512) );
+		if (message.getContent().length() > 512) {
+			message.setContent(message.getContent().substring(0, 512));
 		}
-		if (message.getMale()==null) {
+		if (message.getGender() == null) {
 			return null;
 		}
 
@@ -57,9 +59,9 @@ public class ChatService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Chat insertRobotMessage(String content) {
-		String text  = RobotUtil.getRobotMessage(content);
+		String text = RobotUtil.getRobotMessage(content);
 		if (text == null) {
-			text  = RobotUtil.getLiliRobotMessage(content);
+			text = RobotUtil.getLiliRobotMessage(content);
 		}
 
 		if (text == null) {
@@ -73,14 +75,14 @@ public class ChatService {
 
 		Chat robotMessage = new Chat();
 		robotMessage.setContent(text);
-		robotMessage.setMale((byte) 3);
+		robotMessage.setGender((byte) 3);
 		robotMessage.setPubtime(new Timestamp(System.currentTimeMillis()));
 
 		chatDao.insertMessage(robotMessage);
 		return robotMessage;
 	}
 
-	@Transactional(propagation= Propagation.SUPPORTS,readOnly=true)
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public String getRecentMessage(String max) {
 		int maxtemp = 0;
 
@@ -105,7 +107,7 @@ public class ChatService {
 		return json;
 	}
 
-	@Transactional(propagation= Propagation.SUPPORTS,readOnly=true)
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public List<Chat> list(int cid, int number) {
 		if (number > 32) {
 			number = 32;

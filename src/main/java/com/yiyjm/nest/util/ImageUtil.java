@@ -1,5 +1,11 @@
 package com.yiyjm.nest.util;
 
+import com.aliyun.oss.OSSClient;
+import com.yiyjm.nest.config.Config;
+
+import javax.imageio.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
@@ -10,20 +16,22 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Random;
-import javax.imageio.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import com.yiyjm.nest.config.Config;
-import com.aliyun.oss.OSSClient;
 
+/**
+ * ImageUtil
+ *
+ * @author Jonny.Chang
+ * @date 2020/05/01
+ */
 public class ImageUtil {
 
 	/**
 	 * 压缩图片
+	 *
 	 * @param inputStream 原文件
-	 * @param file         压缩后保存位置
-	 * @param maxSize      最大边长
-	 * @param quality      压缩质量
+	 * @param file        压缩后保存位置
+	 * @param maxSize     最大边长
+	 * @param quality     压缩质量
 	 */
 	public static void zipImage(InputStream inputStream, File file, float maxSize, float quality)
 			throws IOException {
@@ -35,12 +43,12 @@ public class ImageUtil {
 		if (width > maxSize || height > maxSize) {
 			if (width > height) {
 				float bit = maxSize / width;
-				width = (int)(width * bit);
-				height = (int)(height * bit);
+				width = (int) (width * bit);
+				height = (int) (height * bit);
 			} else {
 				float bit = maxSize / height;
-				width = (int)(width * bit);
-				height = (int)(height * bit);
+				width = (int) (width * bit);
+				height = (int) (height * bit);
 			}
 		}
 
@@ -55,7 +63,7 @@ public class ImageUtil {
 		imageWriteParam.setProgressiveMode(ImageWriteParam.MODE_DISABLED);
 		imageWriteParam.setCompressionQuality(quality);
 		ColorModel colorModel = srcFile.getColorModel();
-		imageWriteParam.setDestinationType(new ImageTypeSpecifier(colorModel,colorModel.createCompatibleSampleModel(16, 16)));
+		imageWriteParam.setDestinationType(new ImageTypeSpecifier(colorModel, colorModel.createCompatibleSampleModel(16, 16)));
 
 		/** 存放位置 */
 		FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -67,13 +75,19 @@ public class ImageUtil {
 		fileOutputStream.close();
 	}
 
+	/**
+	 * get suffix
+	 *
+	 * @param name
+	 * @return {@link String}
+	 */
 	public static String getSuffix(String name) {
 		if (name == null) {
 			return null;
 		}
 		int lastDot = name.lastIndexOf(".");
-
-		if (lastDot != -1) { // 有后缀名，例如 .txt .jpg
+		// 有后缀名，例如 .txt .jpg
+		if (lastDot != -1) {
 			return name.substring(lastDot);
 		}
 
@@ -82,7 +96,7 @@ public class ImageUtil {
 
 	/**
 	 * 图片随机名：根据传过来的 calendar，获取时间相关的随机名
-	 *
+	 * <p>
 	 * 月日时分秒 + 随机2位数
 	 */
 	public static String getNameByTime() {
@@ -95,7 +109,7 @@ public class ImageUtil {
 	}
 
 	public static void uploadAliOss(String name, InputStream input) {
-		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL+Config.OSS_ENDPOINT,
+		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		// 上传内容到指定的存储空间（bucketName）并保存为指定的文件名称（objectName）。
 		ossClient.putObject(Config.OSS_BUCKET_NAME, name, input);
@@ -103,13 +117,13 @@ public class ImageUtil {
 	}
 
 	public static boolean aliOssExist(String name) {
-		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL+Config.OSS_ENDPOINT,
+		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		return ossClient.doesObjectExist(Config.OSS_BUCKET_NAME, name);
 	}
 
 	public static void aliOssDelete(String name) {
-		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL+Config.OSS_ENDPOINT,
+		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		ossClient.deleteObject(Config.OSS_BUCKET_NAME, name);
 	}

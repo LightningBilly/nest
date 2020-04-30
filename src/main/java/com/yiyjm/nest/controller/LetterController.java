@@ -13,43 +13,67 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * Letter 控制器
+ *
+ * @author jonny
+ * @date 2020/04/30
+ */
 @Controller
 @RequestMapping("/letter")
 public class LetterController {
-    private LetterService letterService;
+	private LetterService letterService;
 
-    @Autowired
-    public void setLetterService(LetterService letterService) {
-        this.letterService = letterService;
-    }
+	/**
+	 * 集信服务
+	 *
+	 * @param letterService 信服务
+	 */
+	@Autowired
+	public void setLetterService(LetterService letterService) {
+		this.letterService = letterService;
+	}
 
-    /**
-     *  倒叙 或 随机 列出 letter
-     */
-    @PostMapping("/listLetter")
-    @ResponseBody
-    public List<Letter> listLetter(Integer lid, Integer number, Boolean isRand) {
-        List<Letter> letters = letterService.listLetter(lid, number, isRand);
-        return letters;
-    }
+	/**
+	 * 倒叙 或 随机 列出 letter
+	 *
+	 * @param lid    盖子
+	 * @param number 数量
+	 * @param isRand 是兰德
+	 * @return {@link List<Letter>}
+	 */
+	@PostMapping("/listLetter")
+	@ResponseBody
+	public List<Letter> listLetter(Integer lid, Integer number, Boolean isRand) {
+		List<Letter> letters = letterService.listLetter(lid, number, isRand);
+		return letters;
+	}
 
-    /**
-     *  插入一个新的留言
-     */
-    @PostMapping("/insertLetter")
-    @ResponseBody
-    public JsonResult<String> insertLetter(HttpServletRequest request, String nickname, String content) {
-        String ip = IpUtil.getIp(request);
-        return letterService.insertLetter(ip, nickname, content);
-    }
+	/**
+	 * 插入一个新的留言
+	 *
+	 * @param request  请求
+	 * @param nickname 昵称
+	 * @param content  内容
+	 * @return {@link JsonResult<String>}
+	 */
+	@PostMapping("/insertLetter")
+	@ResponseBody
+	public JsonResult<String> insertLetter(HttpServletRequest request, String nickname, String content) {
+		String ip = IpUtil.getIp(request);
+		return letterService.insertLetter(ip, nickname, content);
+	}
 
-    /**
-     *  赞留言
-     */
-    @PostMapping("/zanLetter")
-    @ResponseBody
-    public String zanLetter(Integer lid) {
-        letterService.zanLetter(lid);
-        return "ok";
-    }
+	/**
+	 * 赞留言
+	 *
+	 * @param lid 盖子
+	 * @return {@link String}
+	 */
+	@PostMapping("/zanLetter")
+	@ResponseBody
+	public String zanLetter(Integer lid) {
+		letterService.zanLetter(lid);
+		return "ok";
+	}
 }

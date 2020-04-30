@@ -1,8 +1,8 @@
 /*
  * Editor.md
  *
- * @file        editormd.amd.js 
- * @version     v2.0.1 
+ * @file        editormd.amd.js
+ * @version     v2.0.1
  * @description Open source online markdown editor.
  * @license     MIT License
  * @author      Pandao
@@ -51,8 +51,8 @@
                 cmModePath + "python/python",
                 cmModePath + "perl/perl",
                 cmModePath + "lua/lua",
-                cmModePath + "r/r", 
-                cmModePath + "ruby/ruby", 
+                cmModePath + "r/r",
+                cmModePath + "ruby/ruby",
                 cmModePath + "rst/rst",
                 cmModePath + "smartymixed/smartymixed",
                 cmModePath + "vb/vb",
@@ -63,24 +63,24 @@
                 cmModePath + "erlang/erlang",
                 cmModePath + "jade/jade",
 
-                cmAddonPath + "edit/trailingspace", 
-                cmAddonPath + "dialog/dialog", 
-                cmAddonPath + "search/searchcursor", 
-                cmAddonPath + "search/search", 
-                cmAddonPath + "scroll/annotatescrollbar", 
-                cmAddonPath + "search/matchesonscrollbar", 
-                cmAddonPath + "display/placeholder", 
-                cmAddonPath + "edit/closetag", 
+                cmAddonPath + "edit/trailingspace",
+                cmAddonPath + "dialog/dialog",
+                cmAddonPath + "search/searchcursor",
+                cmAddonPath + "search/search",
+                cmAddonPath + "scroll/annotatescrollbar",
+                cmAddonPath + "search/matchesonscrollbar",
+                cmAddonPath + "display/placeholder",
+                cmAddonPath + "edit/closetag",
                 cmAddonPath + "fold/foldcode",
                 cmAddonPath + "fold/foldgutter",
                 cmAddonPath + "fold/indent-fold",
                 cmAddonPath + "fold/brace-fold",
-                cmAddonPath + "fold/xml-fold", 
+                cmAddonPath + "fold/xml-fold",
                 cmAddonPath + "fold/markdown-fold",
-                cmAddonPath + "fold/comment-fold", 
-                cmAddonPath + "mode/overlay", 
-                cmAddonPath + "selection/active-line", 
-                cmAddonPath + "edit/closebrackets", 
+                cmAddonPath + "fold/comment-fold",
+                cmAddonPath + "mode/overlay",
+                cmAddonPath + "selection/active-line",
+                cmAddonPath + "edit/closebrackets",
                 cmAddonPath + "display/fullscreen",
                 cmAddonPath + "search/match-highlighter"
             ];
@@ -3574,7 +3574,7 @@
 
   editormd.filterHTMLTags = function(html, filters) {
     if (typeof html !== "string") {
-      html = new String(html)
+      html = String(html)
     }
     if (typeof filters !== "string") {
       return html
@@ -3711,7 +3711,7 @@
       smartLists: true,
       smartypants: true
     }
-    markdownDoc = new String(markdownDoc)
+    markdownDoc = String(markdownDoc)
     var markdownParsed = marked(markdownDoc, markedOptions)
     markdownParsed = editormd.filterHTMLTags(
       markdownParsed,

@@ -1,8 +1,8 @@
 /*
  * Editor.md
  *
- * @file        editormd.js 
- * @version     v2.0.1 
+ * @file        editormd.js
+ * @version     v2.0.1
  * @description Open source online markdown editor.
  * @license     MIT License
  * @author      Pandao
@@ -3490,7 +3490,7 @@
 
   editormd.filterHTMLTags = function(html, filters) {
     if (typeof html !== "string") {
-      html = new String(html)
+      html = String(html)
     }
     if (typeof filters !== "string") {
       return html

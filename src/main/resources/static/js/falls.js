@@ -96,7 +96,7 @@ function rights(){
     if(x === $(".content .img").length-1){
         notification('warn','已是最后一张',1000);
         //x = 0;
-    }else{x++;img_block();};
+    }else{x++;img_block();}
 }
 //上一张
 function lefts(){

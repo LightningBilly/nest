@@ -10,28 +10,37 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
+/**
+ * Blog 控制器
+ *
+ * @author jonny
+ * @date 2020/04/30
+ */
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
-    private BlogService blogService;
-    private HttpSession session;
+	private BlogService blogService;
+	private HttpSession session;
 
-    @Autowired
-    public void setBlogService(BlogService blogService) {
-        this.blogService = blogService;
-    }
-    @Autowired
-    public void setSession(HttpSession session) { this.session = session; }
+	@Autowired
+	public void setBlogService(BlogService blogService) {
+		this.blogService = blogService;
+	}
 
-    @RequestMapping("/get")
-    @ResponseBody
-    public JsonResult<Blog> get(Integer bid) {
-        return blogService.get(bid);
-    }
+	@Autowired
+	public void setSession(HttpSession session) {
+		this.session = session;
+	}
 
-    @RequestMapping("/update")
-    @ResponseBody
-    public JsonResult<String> update(Blog blog) {
-        return blogService.update(blog, session.getAttribute("admin"));
-    }
+	@RequestMapping("/get")
+	@ResponseBody
+	public JsonResult<Blog> get(Integer bid) {
+		return blogService.get(bid);
+	}
+
+	@RequestMapping("/update")
+	@ResponseBody
+	public JsonResult<String> update(Blog blog) {
+		return blogService.update(blog, session.getAttribute("admin"));
+	}
 }

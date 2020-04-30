@@ -8,37 +8,67 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * ip 控制器
+ *
+ * @author jonny
+ * @date 2020/04/30
+ */
 @Controller
 @RequestMapping("/ip")
 public class IpController {
-    private IpService ipService;
+	private IpService ipService;
 
-    @Autowired
-    public void setIpService(IpService ipService) {
-        this.ipService = ipService;
-    }
+	/**
+	 * 设置ip服务
+	 *
+	 * @param ipService 知识产权服务
+	 */
+	@Autowired
+	public void setIpService(IpService ipService) {
+		this.ipService = ipService;
+	}
 
-    @PostMapping("/addIp")
-    @ResponseBody
-    public String addIp(HttpServletRequest request) {
-        String ip = IpUtil.getIp(request);
-        ipService.addIp(ip);
-        return "ok";
-    }
+	/**
+	 * 添加ip
+	 *
+	 * @param request 请求
+	 * @return {@link String}
+	 */
+	@PostMapping("/addIp")
+	@ResponseBody
+	public String addIp(HttpServletRequest request) {
+		String ip = IpUtil.getIp(request);
+		ipService.addIp(ip);
+		return "ok";
+	}
 
-    @PostMapping("/chartStatic")
-    @ResponseBody
-    public Map<String, Object> chartStatic() {
-        return ipService.chartStatic();
-    }
+	/**
+	 * 表静态
+	 *
+	 * @return {@link Map<String, Object>}
+	 */
+	@PostMapping("/chartStatic")
+	@ResponseBody
+	public Map<String, Object> chartStatic() {
+		return ipService.chartStatic();
+	}
 
-    @PostMapping("/listIp")
-    @ResponseBody
-    public List<Ip> listIp(Integer page, Integer per) {
-        return ipService.listIp(page, per);
-    }
+	/**
+	 * ip列表
+	 *
+	 * @param page 页面
+	 * @param per  每
+	 * @return {@link List<Ip>}
+	 */
+	@PostMapping("/listIp")
+	@ResponseBody
+	public List<Ip> listIp(Integer page, Integer per) {
+		return ipService.listIp(page, per);
+	}
 }

@@ -10,7 +10,7 @@
           <h4>联系我们</h4>
           <ul class="list-unstyled">
             <li><a class="text-muted" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=${firstPage.contactQQ}&site=qq&menu=yes">QQ:${firstPage.contactQQ}</a></li>
-            <li><a href="http://weibo.com/u/2151990245?is_all=1" target="_blank" class="text-muted">晨微博</a> <a href="http://weibo.com/u/5345027252?is_all=1" target="_blank" class="text-muted">霄微博</a></li>
+            <li><a href="http://weibo.com/u/2151990245?is_all=1" target="_blank" class="text-muted">阳微博</a> <a href="http://weibo.com/u/5345027252?is_all=1" target="_blank" class="text-muted">静微博</a></li>
           </ul>
         </div>
       </div>

@@ -1,3 +1,7 @@
+server:
+  #端口号
+  port: 1175
+
 spring:
   datasource:
     username: lmsite
@@ -57,3 +61,4 @@ mybatis:
 logging:
   level:
     root: info
+

@@ -25,7 +25,7 @@ fi
 echo "启动项目中..."
 
 # 启动程序
-nohup java -jar /home/jar_nest/nest.jar > /home/nest.log 2>&1 &
+nohup java -jar /webroot/packages/nest.jar > /data/weblogs/nest/nest_start.log 2>&1 &
 
 echo "项目已启动，打开运行日志"
 

@@ -31,7 +31,7 @@
 
 			<div class="text-center">
 				Copyright © 2013-2020 Jonny.Chang Developed. |
-				<a target="_blank" href="http://icp.chinaz.com/info?q=fengyunxiao.cn">浙ICP备18052140号</a>
+				<a target="_blank" href="http://icp.chinaz.com/info?q=yiyjm.com">浙ICP备18052140号</a>
 				<#--        <img src="/image/beiantubiao.png" />-->
 				<#--        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37150202000281">浙ICP备18052140号</a>-->
 			</div>

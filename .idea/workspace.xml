@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d2973557-06ba-42e2-9788-f1fcac849224" name="Default Changelist" comment="" />
+    <list default="true" id="d2973557-06ba-42e2-9788-f1fcac849224" name="Default Changelist" comment="feat: add gitignore">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,6 +96,7 @@
       <workItem from="1588259193040" duration="3215000" />
       <workItem from="1588262511200" duration="788000" />
       <workItem from="1588263362797" duration="11648000" />
+      <workItem from="1588438895879" duration="279000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add gitignore">
       <created>1588259758646</created>

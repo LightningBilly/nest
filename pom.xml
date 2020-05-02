@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.yiyjm</groupId>
 	<artifactId>nest</artifactId>
-	<version>0.1.1</version>
+	<version>0.1.2</version>
 	<name>nest</name>
-	<description>our small nest</description>
+	<description>YiYJM-Nest-For-Mine</description>
 
 	<properties>
 		<java.version>11</java.version>

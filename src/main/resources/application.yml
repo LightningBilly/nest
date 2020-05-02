@@ -1,6 +1,6 @@
 server:
   #端口号
-  port: 7751
+  port: 7750
 
 spring:
   datasource:

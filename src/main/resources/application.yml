@@ -35,7 +35,7 @@ spring:
             required: true
 # Https 配置
 server:
-  port: 443
+  port: 4431
   ssl:
     key-store: classpath:yiyjm-com-0503022404.jks
 #    key-store-password: xxxxxxxxx

@@ -38,6 +38,7 @@ JDK 版本：11.0.6
 问：如何运行？
 
 答：运行前请确保配置文件和数据库配置正确，运行入口类中的main方法，src\main\java\com\yiyjm\nest\NestApplication.java
+   该文件中也有端口配置 ，需要注意。
 
 
 问：如何访问？

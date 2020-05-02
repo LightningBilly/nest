@@ -1,7 +1,3 @@
-server:
-  #端口号
-  port: 7750
-
 spring:
   datasource:
     username: lmsite
@@ -38,23 +34,23 @@ spring:
             enable: true
             required: true
 # Https 配置
-#server:
-#  port: 443
-#  ssl:
-#    key-store: classpath:www.yiyjm.com.jks
+server:
+  port: 443
+  ssl:
+    key-store: classpath:yiyjm-com-0503022404.jks
 #    key-store-password: xxxxxxxxx
-#    key-store-type: JKS
-#    key-alias: www.yiyjm.com
-#  compression:
-#    enabled: true
-#    min-response-size: 512
-#  tomcat:
-#    max-threads: 150
-#  max-http-header-size: 102400
+    key-store-type: JKS
+    key-alias: www.yiyjm.com
+  compression:
+    enabled: true
+    min-response-size: 512
+  tomcat:
+    max-threads: 150
+  max-http-header-size: 102400
 
 mybatis:
   type-aliases-package: com.yiyjm.nest.entity
-  #mapper-locations: mapper/*Mapper.xml
+  mapper-locations: mapper/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: false
 

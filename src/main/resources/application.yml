@@ -4,6 +4,7 @@ spring:
     password: rain8240
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/nest?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+#    url: jdbc:mysql://150.109.108.7:3306/nest?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
   freemarker:
     cache: true
     settings:
@@ -37,10 +38,10 @@ spring:
 server:
   port: 4431
   ssl:
-    key-store: classpath:yiyjm-com-0503022404.jks
-#    key-store-password: xxxxxxxxx
+    key-store: classpath:www.yiyjm.com.jks
+    key-store-password: wx1ATFiR
     key-store-type: JKS
-    key-alias: www.yiyjm.com
+  #    key-alias: yiyjm.com
   compression:
     enabled: true
     min-response-size: 512

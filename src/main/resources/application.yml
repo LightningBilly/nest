@@ -38,7 +38,7 @@ spring:
 server:
   port: 4431
   ssl:
-    key-store: classpath:www.yiyjm.com.jks
+    key-store: classpath:yiyjm-com-0503022404.jks
     key-store-password: wx1ATFiR
     key-store-type: JKS
   #    key-alias: yiyjm.com

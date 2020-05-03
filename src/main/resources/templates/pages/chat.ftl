@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<meta name="Keywords" content="${firstPage.keywords}"/>
 	<meta name="description" content="${firstPage.description}"/>
-	<title>我们的小窝-聊天室</title>
+	<title>伊阳静美-聊天室</title>
 	<link rel="stylesheet" type="text/css" href="${firstPage.cdnMuiCss}"/>
 	<link rel="stylesheet" type="text/css" href="css/chat.css?v=${firstPage.timeStampHtml}"/>
 </head>

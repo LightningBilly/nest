@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<meta name="Keywords" content="${firstPage.keywords}"/>
 	<meta name="description" content="${firstPage.description}"/>
-	<title>我们的小窝-访问</title>
+	<title>伊阳静美-访问</title>
 	<link rel="stylesheet" type="text/css" href="${firstPage.cdnBootstrapCss}"/>
 	<link rel="stylesheet" href="css/commen.css?v=${firstPage.timeStampHtml}"/>
 	<link rel="stylesheet" href="css/ip.css?v=${firstPage.timeStampHtml}"/>

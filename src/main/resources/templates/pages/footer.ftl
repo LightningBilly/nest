@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row footer-top">
 			<div class="col-sm-6 col-lg-6">
-				<h4>我们的小窝</h4>
+				<h4>伊阳静美的小窝</h4>
 				<p>${firstPage.copyRight}${firstPage.currencyYear} <br/>
 					${firstPage.adminMessage}</p>
 			</div>
@@ -26,14 +26,12 @@
 			</div>
 
 			<div class="text-center" style="margin-bottom: 2rem;">
-				友情链接： <a href="https://love109.cn">纪实小屋</a>
+				友情链接： <a href="https://jonnyhub.com">🌸️ 伊阳静美 🌸️</a>
 			</div>
 
 			<div class="text-center">
 				Copyright © 2013-2020 Jonny.Chang Developed. |
 				<a target="_blank" href="http://icp.chinaz.com/info?q=yiyjm.com">浙ICP备18052140号</a>
-				<#--        <img src="/image/beiantubiao.png" />-->
-				<#--        <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=37150202000281">浙ICP备18052140号</a>-->
 			</div>
 
 		</div>

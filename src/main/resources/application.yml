@@ -3,8 +3,8 @@ spring:
     username: yiyjm
     password: rain8240
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/nest?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
-#    url: jdbc:mysql://150.109.108.7:3306/nest?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+#    url: jdbc:mysql://localhost:3306/nest?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    url: jdbc:mysql://150.109.108.7:3306/nest?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
   freemarker:
     cache: true
     settings:

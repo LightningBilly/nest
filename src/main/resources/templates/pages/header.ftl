@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-3">
-          <h4>关于：我们的小窝</h4>
+          <h4>关于：伊阳静美</h4>
           <p class="text-muted">This nest blongs to 张向阳 and 吕静, <br />Loved for ${firstPage.loveTotalDays} days, Thanks for your visit. </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-3">
@@ -18,7 +18,7 @@
   </div>
   <div class="navbar navbar-dark bg-dark box-shadow">
     <div class="container d-flex justify-content-between">
-      <a href="/" class="navbar-brand d-flex align-items-center"><strong>我们的小窝</strong></a>
+      <a href="/" class="navbar-brand d-flex align-items-center"><strong>伊阳静美</strong></a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a href="/timeline" class="nav-link">时间线</a>

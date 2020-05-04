@@ -85,33 +85,55 @@ public interface ConfigEnum {
 	String TOKEN_GOOGLE_KEY = "";
 
 	/**
-	 * 上传的图片（将压缩后的保存到服务器，然后上传到 oss，便于快速访问）
+	 * *****************************************************************************
+	 * ***********************         上传服务  OSS          ***********************
+	 * *****************************************************************************
+	 * <p>
+	 * 提供两种方式： OSS 和 本地
+	 * <p>
+	 * OSS： 上传的图片（将压缩后的保存到服务器，然后上传到 oss，便于快速访问）
 	 */
+	boolean ENABLE_OSS = false;
 	String IMAGE_LOCAL_PATH = "/data/nest/images/";
 	float IMAGE_MAX_SIZE = 600;
 	float IMAGE_ZIP_QUALITY = 0.5f;
 	String IMAGE_SUFFIX = ".jpg,.png,.jpeg,.png,.gif";
-
 
 	/**
 	 * 阿里 OSS 配置，这里使用 https 协议
 	 * 上传时 http://oss-cn-shanghai.aliyuncs.com/
 	 * 使用时 http://yiyjm.oss-cn-shanghai.aliyuncs.com/
 	 * 自定义 http://static.yiyjm.com/
+	 * 用户登录名称 yiyjm@jonny.onaliyun.com
 	 */
 	String OSS_PROTOCOL = "https://";
 	String OSS_BUCKET_NAME = "yiyjm";
 	String OSS_ENDPOINT = "oss-cn-shanghai.aliyuncs.com/";
 	String OSS_ACCESS_KEY_ID = "LTAI4G1dhmiMYQZxifnhRmdC";
 	String OSS_ACCESS_KEY_SECRET = "ZkYdINj0UheNN4ixsCKQ79ZvEOwlVC";
-//	用户登录名称 yiyjm@jonny.onaliyun.com
-//	AccessKey ID LTAI4G1dhmiMYQZxifnhRmdC
-//	AccessKey Secret ZkYdINj0UheNN4ixsCKQ79ZvEOwlVC
+
+
+	/**
+	 * *****************************************************************************
+	 * ***********************          上传服务本地           ***********************
+	 * *****************************************************************************
+	 * <p>
+	 * 提供两种方式： OSS 和 本地
+	 * <p>
+	 * OSS： 上传的图片（将压缩后的保存到服务器，然后上传到 oss，便于快速访问）
+	 */
+	boolean ENABLE_LOCAL = true;
+	String LOCAL_FILE_PATH = "~/nest/";
+	String IMAGES_FOLDER_NAME = "images/";
+	String VIDEOS_FOLDER_NAME = "videos/";
+	String OTHERS_FOLDER_NAME = "others/";
+
+
 	/**
 	 * 自定义访问域名，不使用 oss 的域名进行访问
 	 */
-//	String OSS_URL_PREFIX = OSS_PROTOCOL + "static.yiyjm.com/";
-	String OSS_URL_PREFIX = OSS_PROTOCOL + "yiyjm.oss-cn-shanghai.aliyuncs.com/";
+	String OSS_URL_PREFIX = OSS_PROTOCOL + "static.yiyjm.com/";
+
 	/**
 	 * 将 博客 中的 图片 和 相册 中的 图片 分开目录保存
 	 */

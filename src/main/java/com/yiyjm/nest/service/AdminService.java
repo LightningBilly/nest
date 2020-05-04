@@ -38,6 +38,8 @@ public class AdminService {
 	private static final Logger logger = LoggerFactory.getLogger(AdminService.class);
 	private ImageDao imageDao;
 	private BlogDao blogDao;
+	private static final String GIF = ".gif";
+	private static final String JPG = ".jpg";
 
 	/**
 	 * set 图像 Dao
@@ -130,8 +132,8 @@ public class AdminService {
 			return map;
 		}
 
-		if (file.getSize() > 1024 * 1024 * 10) {
-			map.put("message", "上传错误：上传错误：大小超过10M");
+		if (file.getSize() > 1024 * 1024 * 20) {
+			map.put("message", "上传错误：上传错误：大小超过20M");
 			return map;
 		}
 
@@ -162,8 +164,8 @@ public class AdminService {
 		String fileName = ImageUtil.getNameByTime();
 
 		// 如果是动图，直接上传，否则压缩成jpg后上传
-		if (extension.equalsIgnoreCase(".gif")) {
-			fileName = folder + fileName + ".gif";
+		if (extension.equalsIgnoreCase(GIF)) {
+			fileName = folder + fileName + GIF;
 
 			try {
 				ImageUtil.uploadAliOss(fileName, file.getInputStream());
@@ -173,7 +175,7 @@ public class AdminService {
 				return map;
 			}
 		} else {
-			fileName += ".jpg";
+			fileName += JPG;
 			localFile = new File(Config.IMAGE_LOCAL_PATH + fileName);
 			try {
 				ImageUtil.zipImage(file.getInputStream(), localFile, Config.IMAGE_MAX_SIZE, Config.IMAGE_ZIP_QUALITY);
@@ -263,11 +265,12 @@ public class AdminService {
 	}
 
 	/**
-	 * 履带
+	 * 爬虫
 	 *
-	 * @param startUrl 开始的url
-	 * @param t        t
+	 * @param startUrl 开始的 url
+	 * @param t        t, 爬虫对象
 	 */
+	@SuppressWarnings("unchecked")
 	public void crawler(String startUrl, Class t) {
 		CrawlConfig config = new CrawlConfig();
 		// 保存位置

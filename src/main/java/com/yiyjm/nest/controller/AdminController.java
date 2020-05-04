@@ -21,8 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * admin 控制器
@@ -36,6 +35,13 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private AdminService adminService;
 	private HttpSession session;
+	private static final Set<String> LOCALHOST_SET = new HashSet<>(Arrays.asList("127.0.0.1", "localhost"));
+	private static final String CSDN = "csdn";
+	private static final String CSDN_URL = "https://blog.csdn.net/";
+	private static final String DYTT = "dytt";
+	private static final String DYTT_URL = "http://www.ygdy8.net/";
+	private static final String ADMIN = "admin";
+
 
 	/**
 	 * 设置管理服务
@@ -68,12 +74,12 @@ public class AdminController {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
 		// 本地测试，不需要登陆
-		if (servletName.equals("127.0.0.1") || servletName.equals("localhost")) {
-			session.setAttribute("admin", Config.TOKEN_DO_LOGIN);
+		if (LOCALHOST_SET.contains(servletName)) {
+			session.setAttribute(ADMIN, Config.TOKEN_DO_LOGIN);
 			return "admin/index";
 		}
 
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute("admin"))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
 			return "redirect:/";
 		}
 		return "admin/index";
@@ -102,7 +108,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/logout")
 	public String logout() {
-		session.removeAttribute("admin");
+		session.removeAttribute(ADMIN);
 		return "redirect:/";
 	}
 
@@ -115,7 +121,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/image")
 	public String image(ModelMap map, Integer page) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute("admin"))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
 			return "redirect:/";
 		}
 
@@ -163,7 +169,7 @@ public class AdminController {
 			return "redirect:/";
 		}
 
-		session.setAttribute("admin", Config.TOKEN_DO_LOGIN);
+		session.setAttribute(ADMIN, Config.TOKEN_DO_LOGIN);
 		return "redirect:/adminLove";
 	}
 
@@ -191,7 +197,7 @@ public class AdminController {
 	 */// 根据 bid 编辑博客，bid 没有，创建新的博客
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute("admin"))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
 			return "redirect:/";
 		}
 		int bid2 = adminService.gainBlogId(bid);
@@ -222,7 +228,7 @@ public class AdminController {
 	@RequestMapping("/uploadImage")
 	@ResponseBody
 	public Map<String, Object> uploadImage(@RequestParam("editormd-image-file") MultipartFile file, Integer bid) {
-		return adminService.uploadImage(file, bid, session.getAttribute("admin"));
+		return adminService.uploadImage(file, bid, session.getAttribute(ADMIN));
 	}
 
 	/**
@@ -234,7 +240,7 @@ public class AdminController {
 	@RequestMapping("/deleteImage")
 	@ResponseBody
 	public String deleteImage(Integer iid) {
-		return adminService.deleteImage(iid, session.getAttribute("admin"));
+		return adminService.deleteImage(iid, session.getAttribute(ADMIN));
 	}
 
 	/**
@@ -246,16 +252,16 @@ public class AdminController {
 	@RequestMapping("/crawler")
 	@ResponseBody
 	public String crawler(String kind) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute("admin"))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
 			return "请先登录";
 		}
 
 		if (kind == null) {
 			return "类型错误";
-		} else if (kind.equals("csdn")) {
-			adminService.crawler("https://blog.csdn.net/", CrawlerCsdn.class);
-		} else if (kind.equals("dytt")) {
-			adminService.crawler("http://www.ygdy8.net/", CrawlerDytt.class);
+		} else if (kind.equals(CSDN)) {
+			adminService.crawler(CSDN_URL, CrawlerCsdn.class);
+		} else if (kind.equals(DYTT)) {
+			adminService.crawler(DYTT_URL, CrawlerDytt.class);
 		} else {
 			return "类型错误";
 		}

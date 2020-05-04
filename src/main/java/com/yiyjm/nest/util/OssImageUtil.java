@@ -18,27 +18,28 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 
 /**
+ * oss形象跑龙套
  * OssImageUtil
  *
  * @author Jonny.Chang
  * @date 2020/05/01
  */
 public class OssImageUtil {
-
 	/**
+	 * 压缩图像
 	 * 压缩图片
 	 *
 	 * @param inputStream 原文件
 	 * @param file        压缩后保存位置
 	 * @param maxSize     最大边长
 	 * @param quality     压缩质量
+	 * @throws IOException ioexception
 	 */
 	public static void zipImage(InputStream inputStream, File file, float maxSize, float quality)
 			throws IOException {
 		BufferedImage srcFile = ImageIO.read(inputStream);
 		int width = srcFile.getWidth();
 		int height = srcFile.getHeight();
-
 		// 按比例缩放图标，不能超过 maxSize
 		if (width > maxSize || height > maxSize) {
 			if (width > height) {
@@ -51,11 +52,9 @@ public class OssImageUtil {
 				height = (int) (height * bit);
 			}
 		}
-
 		/** 宽,高设定 */
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		image.getGraphics().drawImage(srcFile, 0, 0, width, height, null);
-
 		/** 压缩质量 */
 		ImageWriter imageWriter = ImageIO.getImageWritersByFormatName("jpeg").next();
 		ImageWriteParam imageWriteParam = imageWriter.getDefaultWriteParam();
@@ -64,21 +63,20 @@ public class OssImageUtil {
 		imageWriteParam.setCompressionQuality(quality);
 		ColorModel colorModel = srcFile.getColorModel();
 		imageWriteParam.setDestinationType(new ImageTypeSpecifier(colorModel, colorModel.createCompatibleSampleModel(16, 16)));
-
 		/** 存放位置 */
 		FileOutputStream fileOutputStream = new FileOutputStream(file);
 		imageWriter.reset();
 		imageWriter.setOutput(ImageIO.createImageOutputStream(fileOutputStream));
 		imageWriter.write(null, new IIOImage(image, null, null), imageWriteParam);
-
 		fileOutputStream.flush();
 		fileOutputStream.close();
 	}
 
 	/**
+	 * get 后缀
 	 * get suffix
 	 *
-	 * @param name
+	 * @param name 的名字
 	 * @return {@link String}
 	 */
 	public static String getSuffix(String name) {
@@ -90,24 +88,30 @@ public class OssImageUtil {
 		if (lastDot != -1) {
 			return name.substring(lastDot);
 		}
-
 		return null;
 	}
 
 	/**
+	 * get 的名字通过时间
 	 * 图片随机名：根据传过来的 calendar，获取时间相关的随机名
 	 * <p>
 	 * 月日时分秒 + 随机2位数
+	 *
+	 * @return {@link String}
 	 */
 	public static String getNameByTime() {
 		Random random = new Random(System.currentTimeMillis());
-
 		DateFormat dateFormat = new SimpleDateFormat("yyMMdd_HHmmss_SSS");
 		String format = dateFormat.format(System.currentTimeMillis());
-
 		return format + random.nextInt(9);
 	}
 
+	/**
+	 * 上传阿里oss
+	 *
+	 * @param name  的名字
+	 * @param input 输入
+	 */
 	public static void uploadAliOss(String name, InputStream input) {
 		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
@@ -116,23 +120,41 @@ public class OssImageUtil {
 		ossClient.shutdown();
 	}
 
+	/**
+	 * 阿里oss存在
+	 *
+	 * @param name 的名字
+	 * @return boolean
+	 */
 	public static boolean aliOssExist(String name) {
 		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		return ossClient.doesObjectExist(Config.OSS_BUCKET_NAME, name);
 	}
 
+	/**
+	 * 阿里oss删除
+	 *
+	 * @param name 的名字
+	 */
 	public static void aliOssDelete(String name) {
 		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		ossClient.deleteObject(Config.OSS_BUCKET_NAME, name);
 	}
 
+	/**
+	 * get 阿里ossurl
+	 *
+	 * @param fileName 文件名称
+	 * @return {@link String}
+	 */
 	public static String getAliOssUrl(String fileName) {
 		return Config.OSS_URL_PREFIX + fileName;
 	}
 
 	/**
+	 * get 真实
 	 * 生成验证码
 	 *
 	 * @param request  request 请求
@@ -143,7 +165,6 @@ public class OssImageUtil {
 	public static void getVeri(HttpServletRequest request, HttpServletResponse response, String veriname) throws IOException {
 		int width = 120;
 		int height = 30;
-
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -151,11 +172,9 @@ public class OssImageUtil {
 		// backgroud
 		g.setColor(new Color(249, 249, 249));
 		g.fillRect(0, 0, width, height);
-
 		// setBorder(g);
 		g.setColor(new Color(210, 209, 205));
 		g.drawRect(1, 1, width - 2, height - 2);
-
 		//drawRandomLine(g);
 		g.setColor(Color.GRAY);
 		for (int i = 0; i < 5; i++) {
@@ -165,7 +184,6 @@ public class OssImageUtil {
 			int y2 = new Random().nextInt(height);
 			g.drawLine(x1, y1, x2, y2);
 		}
-
 		String random = drawRandomNum((Graphics2D) g);
 		request.getSession().setAttribute(veriname, random);
 		response.setContentType("image/jpeg");
@@ -175,6 +193,12 @@ public class OssImageUtil {
 		ImageIO.write(bi, "jpg", response.getOutputStream());
 	}
 
+	/**
+	 * 随机抽取 num
+	 *
+	 * @param g g
+	 * @return {@link String}
+	 */
 	private static String drawRandomNum(Graphics2D g) {
 		StringBuilder sb = new StringBuilder();
 		g.setFont(new Font("cmr10", Font.BOLD, 20));

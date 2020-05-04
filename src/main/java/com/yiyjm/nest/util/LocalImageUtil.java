@@ -13,9 +13,11 @@ import java.io.InputStream;
 import java.util.Random;
 
 /**
+ * 当地形象跑龙套
  * Local image util
  *
  * @author jonny
+ * @date 2020/05/04
  */
 public class LocalImageUtil {
 	public static final String JPEG = "jpeg";
@@ -27,13 +29,13 @@ public class LocalImageUtil {
 	 * @param file        压缩后保存位置
 	 * @param maxSize     最大边长
 	 * @param quality     压缩质量
+	 * @throws IOException ioexception
 	 */
 	public static void zipImage(InputStream inputStream, File file, float maxSize, float quality)
 			throws IOException {
 		BufferedImage srcFile = ImageIO.read(inputStream);
 		int width = srcFile.getWidth();
 		int height = srcFile.getHeight();
-
 		// 按比例缩放图标，不能超过 maxSize
 		if (width > maxSize || height > maxSize) {
 			if (width > height) {
@@ -46,11 +48,9 @@ public class LocalImageUtil {
 				height = (int) (height * bit);
 			}
 		}
-
 		/* 宽,高设定 */
 		BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		image.getGraphics().drawImage(srcFile, 0, 0, width, height, null);
-
 		/* 压缩质量 */
 		ImageWriter imageWriter = ImageIO.getImageWritersByFormatName(JPEG).next();
 		ImageWriteParam imageWriteParam = imageWriter.getDefaultWriteParam();
@@ -59,18 +59,17 @@ public class LocalImageUtil {
 		imageWriteParam.setCompressionQuality(quality);
 		ColorModel colorModel = srcFile.getColorModel();
 		imageWriteParam.setDestinationType(new ImageTypeSpecifier(colorModel, colorModel.createCompatibleSampleModel(16, 16)));
-
 		/* 存放位置 */
 		FileOutputStream fileOutputStream = new FileOutputStream(file);
 		imageWriter.reset();
 		imageWriter.setOutput(ImageIO.createImageOutputStream(fileOutputStream));
 		imageWriter.write(null, new IIOImage(image, null, null), imageWriteParam);
-
 		fileOutputStream.flush();
 		fileOutputStream.close();
 	}
 
 	/**
+	 * get 后缀
 	 * get suffix
 	 *
 	 * @param name 获取文件后缀名
@@ -89,6 +88,7 @@ public class LocalImageUtil {
 	}
 
 	/**
+	 * get 真实
 	 * 生成验证码
 	 *
 	 * @param request  request 请求
@@ -99,7 +99,6 @@ public class LocalImageUtil {
 	public static void getVeri(HttpServletRequest request, HttpServletResponse response, String veriname) throws IOException {
 		int width = 120;
 		int height = 30;
-
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -107,11 +106,9 @@ public class LocalImageUtil {
 		// backgroud
 		g.setColor(new Color(249, 249, 249));
 		g.fillRect(0, 0, width, height);
-
 		// setBorder(g);
 		g.setColor(new Color(210, 209, 205));
 		g.drawRect(1, 1, width - 2, height - 2);
-
 		//drawRandomLine(g);
 		g.setColor(Color.GRAY);
 		for (int i = 0; i < 5; i++) {
@@ -121,7 +118,6 @@ public class LocalImageUtil {
 			int y2 = new Random().nextInt(height);
 			g.drawLine(x1, y1, x2, y2);
 		}
-
 		String random = drawRandomNum((Graphics2D) g);
 		request.getSession().setAttribute(veriname, random);
 		response.setContentType("image/jpeg");
@@ -132,6 +128,7 @@ public class LocalImageUtil {
 	}
 
 	/**
+	 * 随机抽取num
 	 * 解析随机数字
 	 *
 	 * @param g 供对几何形状、坐标转换、颜色管理和文本布局更为复杂的控制对象
@@ -158,5 +155,4 @@ public class LocalImageUtil {
 		}
 		return sb.toString();
 	}
-
 }

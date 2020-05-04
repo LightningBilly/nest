@@ -5,6 +5,7 @@ import com.yiyjm.nest.dao.BlogDao;
 import com.yiyjm.nest.dao.ImageDao;
 import com.yiyjm.nest.entity.Blog;
 import com.yiyjm.nest.entity.Image;
+import com.yiyjm.nest.util.ImageUtil;
 import com.yiyjm.nest.util.OssImageUtil;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 管理服务
  * Admin 服务
  *
  * @author jonny
@@ -43,6 +45,7 @@ public class AdminService {
 
 	/**
 	 * set 图像 Dao
+	 * set 图像 Dao
 	 *
 	 * @param imageDao 图像 Dao
 	 */
@@ -52,6 +55,7 @@ public class AdminService {
 	}
 
 	/**
+	 * set 博客 Dao
 	 * set 博客 Dao
 	 *
 	 * @param blogDao 博客 Dao
@@ -101,6 +105,12 @@ public class AdminService {
 		return "删除失败，系统错误";
 	}
 
+	/**
+	 * 删除操作系统映像
+	 *
+	 * @param iid iid
+	 * @return boolean
+	 */
 	private boolean deleteOssImage(int iid) {
 		boolean result;
 		Image image = imageDao.queryImage(iid);
@@ -114,6 +124,7 @@ public class AdminService {
 	}
 
 	/**
+	 * 删除本地图片
 	 * 删除本地照片
 	 *
 	 * @return 是否删除
@@ -169,7 +180,7 @@ public class AdminService {
 		}
 
 		// 检测后缀
-		String extension = OssImageUtil.getSuffix(file.getOriginalFilename());
+		String extension = ImageUtil.getSuffix(file.getOriginalFilename());
 		if (extension == null) {
 			map.put("message", "上传错误：该图片无后缀");
 			return map;
@@ -192,7 +203,7 @@ public class AdminService {
 		}
 
 		// 获取新的文件名，无后缀
-		String fileName = OssImageUtil.getNameByTime();
+		String fileName = ImageUtil.getNameByTime();
 
 		// 如果是动图，直接上传，否则压缩成jpg后上传
 		if (extension.equalsIgnoreCase(GIF)) {
@@ -209,7 +220,7 @@ public class AdminService {
 			fileName += JPG;
 			localFile = new File(Config.IMAGE_LOCAL_PATH + fileName);
 			try {
-				OssImageUtil.zipImage(file.getInputStream(), localFile, Config.IMAGE_MAX_SIZE, Config.IMAGE_ZIP_QUALITY);
+				ImageUtil.zipImage(file.getInputStream(), localFile, Config.IMAGE_MAX_SIZE, Config.IMAGE_ZIP_QUALITY);
 			} catch (Exception e) {
 				logger.error("上传错误：图片压缩成jpg失败");
 				map.put("message", "上传错误：图片压缩成jpg失败");

@@ -1,4 +1,4 @@
-package com.yiyjm.nest.util;
+package com.yiyjm.nest.common;
 
 /**
  * 通用常量类

@@ -5,9 +5,9 @@ import com.yiyjm.nest.config.CrawlerCsdn;
 import com.yiyjm.nest.config.CrawlerDytt;
 import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.AdminService;
-import com.yiyjm.nest.util.CommonConstants;
+import com.yiyjm.nest.common.CommonConstants;
 import com.yiyjm.nest.util.GoogleAuthenticator;
-import com.yiyjm.nest.util.LocalImageUtil;
+import com.yiyjm.nest.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -183,7 +183,7 @@ public class AdminController {
 	@RequestMapping("/veri")
 	public void veri(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			LocalImageUtil.getVeri(request, response, "veri");
+			ImageUtil.getVeri(request, response, "veri");
 		} catch (IOException e) {
 			logger.info("生成验证码错误");
 		}

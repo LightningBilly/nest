@@ -12,7 +12,9 @@ import java.time.temporal.ChronoUnit;
  * @date 2020/04/30
  */
 public class FirstPage {
-	// 网站显示的信息
+	/**
+	 * 网站显示的信息
+	 */
 	private String titlePrimary = Config.FIRST_PAGE_TITLE_PRIMARY;
 	private String titleSecondary = Config.FIRST_PAGE_TITLE_SECONDARY;
 	private String timeLove = Config.FIRST_PAGE_TIME_LOVE;
@@ -21,9 +23,13 @@ public class FirstPage {
 	private String adminMessage = Config.FIRST_PAGE_ADMIN_MESSAGE;
 	private String keywords = Config.FIRST_PAGE_KEYWORDS;
 	private String description = Config.FIRST_PAGE_KEYWORDS;
-	// js,css 缓存时间戳
+	/**
+	 * js,css 缓存时间戳
+	 */
 	private String timeStampHtml = Config.FIRST_PAGE_TIME_STAMP_HTML;
-	// cdn 地址
+	/**
+	 * cdn 地址
+	 */
 	private String cdnBootstrapCss = Config.CDN_BOOTSTRAP_CSS;
 	private String cdnBootstrapJs = Config.CDN_BOOTSTRAP_JS;
 	private String cdnMuiCss = Config.CDN_MUI_CSS;

@@ -26,7 +26,7 @@ JDK 版本：11.0.6
 
 数据库sql：src\main\java\com\yiyjm\nest\config\nest.sql
 
-密码、密钥等配置：src\main\java\com\yiyjm\nest\config\ConfigI.java
+密码、密钥等配置：src\main\java\com\yiyjm\nest\config\ConfigEnum.java
 
 数据库、邮箱等配置：src\main\resources\application.yml
 

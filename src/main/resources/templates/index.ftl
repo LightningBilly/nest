@@ -53,12 +53,12 @@
 		<div class="row">
 			<div class="col-6 col-sm-6 col-lg-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/photos/3d/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/3d/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/1.jpg" alt="3D 相册">
 					</a>
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
-							<a href="//static.yiyjm.com/nest/photos/3d/index.html" target="_blank"
+							<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/3d/index.html" target="_blank"
 							   class="btn btn-sm btn-link text-muted"> 3D 相册 </a>
 						</div>
 					</div>
@@ -66,12 +66,12 @@
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/photos/ipresenter/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/ipresenter/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/2.jpg" alt="旋转相册">
 					</a>
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
-							<a href="//static.yiyjm.com/nest/photos/ipresenter/index.html" target="_blank"
+							<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/ipresenter/index.html" target="_blank"
 							   class="btn btn-sm btn-link text-muted"> 旋转相册 </a>
 						</div>
 					</div>
@@ -79,12 +79,12 @@
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/photos/rotate/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/rotate/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/3.jpg" alt="魔方相册">
 					</a>
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
-							<a href="//static.yiyjm.com/nest/photos/rotate/index.html" target="_blank"
+							<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/rotate/index.html" target="_blank"
 							   class="btn btn-sm btn-link text-muted"> 魔方相册 </a>
 						</div>
 					</div>
@@ -92,12 +92,12 @@
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/photos/wall/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/wall/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/4.jpg" alt="九宫格相册">
 					</a>
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
-							<a href="//static.yiyjm.com/nest/photos/wall/index.html" target="_blank"
+							<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/photos/wall/index.html" target="_blank"
 							   class="btn btn-sm btn-link text-muted"> 九宫格相册 </a>
 						</div>
 					</div>
@@ -113,44 +113,44 @@
 		<div class="row">
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/storys/record/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/record/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/5.jpg" alt="不灵不灵">
 					</a>
 					<div class="card-body">
-						<a href="//static.yiyjm.com/nest/storys/record/index.html" target="_blank"
+						<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/record/index.html" target="_blank"
 						   class="btn btn-sm btn-link text-muted">Time of Love</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/storys/code/170520.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/code/170520.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/6.jpg" alt="不灵不灵">
 					</a>
 					<div class="card-body">
-						<a href="//static.yiyjm.com/nest/storys/code/170520.html" target="_blank"
+						<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/code/170520.html" target="_blank"
 						   class="btn btn-sm btn-link text-muted">Word of Love</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/storys/newYear/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/newYear/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/7.jpg" alt="不灵不灵">
 					</a>
 					<div class="card-body">
-						<a href="//static.yiyjm.com/nest/storys/newYear/index.html" target="_blank"
+						<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/newYear/index.html" target="_blank"
 						   class="btn btn-sm btn-link text-muted">Years of Love</a>
 					</div>
 				</div>
 			</div>
 			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 				<div class="card">
-					<a href="//static.yiyjm.com/nest/storys/valentine/index.html" target="_blank">
+					<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/valentine/index.html" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/8.jpg" alt="不灵不灵">
 					</a>
 					<div class="card-body">
-						<a href="//static.yiyjm.com/nest/storys/valentine/index.html" target="_blank"
+						<a href="//yiyjm.oss-cn-shanghai.aliyuncs.com/nest/storys/valentine/index.html" target="_blank"
 						   class="btn btn-sm btn-link text-muted">Lover of Love</a>
 					</div>
 				</div>

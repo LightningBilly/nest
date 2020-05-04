@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * admin 控制器
@@ -35,7 +37,7 @@ public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private AdminService adminService;
 	private HttpSession session;
-	private static final Set<String> LOCALHOST_SET = new HashSet<>(Arrays.asList("127.0.0.1", "localhost"));
+	private static final Set<String> LOCALHOST_SET = Stream.of("127.0.0.1", "localhost").collect(Collectors.toSet());
 	private static final String CSDN = "csdn";
 	private static final String CSDN_URL = "https://blog.csdn.net/";
 	private static final String DYTT = "dytt";

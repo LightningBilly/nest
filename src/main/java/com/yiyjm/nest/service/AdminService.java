@@ -5,7 +5,7 @@ import com.yiyjm.nest.dao.BlogDao;
 import com.yiyjm.nest.dao.ImageDao;
 import com.yiyjm.nest.entity.Blog;
 import com.yiyjm.nest.entity.Image;
-import com.yiyjm.nest.util.ImageUtil;
+import com.yiyjm.nest.util.OssImageUtil;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
@@ -81,8 +81,8 @@ public class AdminService {
 		}
 
 		String ossResult;
-		if (ImageUtil.aliOssExist(image.getName())) {
-			ImageUtil.aliOssDelete(image.getName());
+		if (OssImageUtil.aliOssExist(image.getName())) {
+			OssImageUtil.aliOssDelete(image.getName());
 			ossResult = "oss 中已删除，";
 		} else {
 			ossResult = "oss 中不存在，";
@@ -138,7 +138,7 @@ public class AdminService {
 		}
 
 		// 检测后缀
-		String extension = ImageUtil.getSuffix(file.getOriginalFilename());
+		String extension = OssImageUtil.getSuffix(file.getOriginalFilename());
 		if (extension == null) {
 			map.put("message", "上传错误：该图片无后缀");
 			return map;
@@ -161,14 +161,14 @@ public class AdminService {
 		}
 
 		// 获取新的文件名，无后缀
-		String fileName = ImageUtil.getNameByTime();
+		String fileName = OssImageUtil.getNameByTime();
 
 		// 如果是动图，直接上传，否则压缩成jpg后上传
 		if (extension.equalsIgnoreCase(GIF)) {
 			fileName = folder + fileName + GIF;
 
 			try {
-				ImageUtil.uploadAliOss(fileName, file.getInputStream());
+				OssImageUtil.uploadAliOss(fileName, file.getInputStream());
 			} catch (Exception e) {
 				logger.error("上传错误：gif上传阿里云OOS错误");
 				map.put("message", "上传错误：gif上传阿里云OOS错误");
@@ -178,7 +178,7 @@ public class AdminService {
 			fileName += JPG;
 			localFile = new File(Config.IMAGE_LOCAL_PATH + fileName);
 			try {
-				ImageUtil.zipImage(file.getInputStream(), localFile, Config.IMAGE_MAX_SIZE, Config.IMAGE_ZIP_QUALITY);
+				OssImageUtil.zipImage(file.getInputStream(), localFile, Config.IMAGE_MAX_SIZE, Config.IMAGE_ZIP_QUALITY);
 			} catch (Exception e) {
 				logger.error("上传错误：图片压缩成jpg失败");
 				map.put("message", "上传错误：图片压缩成jpg失败");
@@ -188,7 +188,7 @@ public class AdminService {
 			fileName = folder + fileName;
 			try {
 				InputStream inputStream = new FileInputStream(localFile);
-				ImageUtil.uploadAliOss(fileName, inputStream);
+				OssImageUtil.uploadAliOss(fileName, inputStream);
 			} catch (Exception e) {
 				logger.error("上传错误：jpg上传阿里云OOS错误");
 				map.put("message", "上传错误：jpg上传阿里云OOS错误");
@@ -204,7 +204,7 @@ public class AdminService {
 
 		map.put("success", 1);
 		map.put("message", "上传成功");
-		map.put("url", ImageUtil.getAliOssUrl(fileName));
+		map.put("url", OssImageUtil.getAliOssUrl(fileName));
 		return map;
 	}
 

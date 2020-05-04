@@ -5,8 +5,9 @@ import com.yiyjm.nest.config.CrawlerCsdn;
 import com.yiyjm.nest.config.CrawlerDytt;
 import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.AdminService;
+import com.yiyjm.nest.util.CommonConstants;
 import com.yiyjm.nest.util.GoogleAuthenticator;
-import com.yiyjm.nest.util.ImageUtil;
+import com.yiyjm.nest.util.OssImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +40,7 @@ public class AdminController {
 	private HttpSession session;
 	private static final Set<String> LOCALHOST_SET = Stream.of("127.0.0.1", "localhost").collect(Collectors.toSet());
 	private static final String CSDN = "csdn";
-	private static final String CSDN_URL = "https://blog.csdn.net/";
 	private static final String DYTT = "dytt";
-	private static final String DYTT_URL = "http://www.ygdy8.net/";
 	private static final String ADMIN = "admin";
 
 
@@ -184,7 +183,7 @@ public class AdminController {
 	@RequestMapping("/veri")
 	public void veri(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			ImageUtil.getVeri(request, response, "veri");
+			OssImageUtil.getVeri(request, response, "veri");
 		} catch (IOException e) {
 			logger.info("生成验证码错误");
 		}
@@ -261,9 +260,9 @@ public class AdminController {
 		if (kind == null) {
 			return "类型错误";
 		} else if (kind.equals(CSDN)) {
-			adminService.crawler(CSDN_URL, CrawlerCsdn.class);
+			adminService.crawler(CommonConstants.CSDN_URL, CrawlerCsdn.class);
 		} else if (kind.equals(DYTT)) {
-			adminService.crawler(DYTT_URL, CrawlerDytt.class);
+			adminService.crawler(CommonConstants.DYTT_URL, CrawlerDytt.class);
 		} else {
 			return "类型错误";
 		}

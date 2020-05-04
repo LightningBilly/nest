@@ -18,12 +18,12 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 
 /**
- * ImageUtil
+ * OssImageUtil
  *
  * @author Jonny.Chang
  * @date 2020/05/01
  */
-public class ImageUtil {
+public class OssImageUtil {
 
 	/**
 	 * 压缩图片

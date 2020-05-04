@@ -1,4 +1,4 @@
-package com.yiyjm.nest.service;
+package com.yiyjm.nest.tools;
 
 import com.yiyjm.nest.config.Config;
 import org.slf4j.Logger;

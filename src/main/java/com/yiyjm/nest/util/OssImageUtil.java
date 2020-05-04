@@ -3,16 +3,7 @@ package com.yiyjm.nest.util;
 import com.aliyun.oss.OSSClient;
 import com.yiyjm.nest.config.Config;
 
-import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Random;
 
 /**
  * oss形象跑龙套
@@ -69,7 +60,5 @@ public class OssImageUtil {
 	public static String getAliOssUrl(String fileName) {
 		return Config.OSS_URL_PREFIX + fileName;
 	}
-
-
 
 }

@@ -2,8 +2,8 @@ package com.yiyjm.nest.controller;
 
 import com.yiyjm.nest.config.Config;
 import com.yiyjm.nest.entity.Blog;
-import com.yiyjm.nest.service.BlogService;
-import com.yiyjm.nest.service.IpService;
+import com.yiyjm.nest.tools.BlogService;
+import com.yiyjm.nest.tools.IpService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

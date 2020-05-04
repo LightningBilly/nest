@@ -2,7 +2,7 @@ package com.yiyjm.nest.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yiyjm.nest.entity.Chat;
-import com.yiyjm.nest.service.ChatService;
+import com.yiyjm.nest.tools.ChatService;
 import com.yiyjm.nest.util.Jackson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

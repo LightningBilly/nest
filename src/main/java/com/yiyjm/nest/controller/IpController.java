@@ -1,7 +1,7 @@
 package com.yiyjm.nest.controller;
 
 import com.yiyjm.nest.entity.Ip;
-import com.yiyjm.nest.service.IpService;
+import com.yiyjm.nest.tools.IpService;
 import com.yiyjm.nest.util.IpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

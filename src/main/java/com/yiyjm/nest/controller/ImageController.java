@@ -1,7 +1,7 @@
 package com.yiyjm.nest.controller;
 
 import com.yiyjm.nest.entity.Image;
-import com.yiyjm.nest.service.ImageService;
+import com.yiyjm.nest.tools.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

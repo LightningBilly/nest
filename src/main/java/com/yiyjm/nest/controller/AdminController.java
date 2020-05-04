@@ -4,9 +4,8 @@ import com.yiyjm.nest.config.Config;
 import com.yiyjm.nest.config.CrawlerCsdn;
 import com.yiyjm.nest.config.CrawlerDytt;
 import com.yiyjm.nest.entity.Image;
-import com.yiyjm.nest.service.AdminService;
+import com.yiyjm.nest.tools.AdminService;
 import com.yiyjm.nest.common.CommonConstants;
-import com.yiyjm.nest.util.GoogleAuthenticator;
 import com.yiyjm.nest.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -164,18 +163,18 @@ public class AdminController {
 			return "redirect:/";
 		}
 
-		GoogleAuthenticator ga = new GoogleAuthenticator();
-		boolean r = ga.check_code(Config.TOKEN_GOOGLE_KEY, google, System.currentTimeMillis());
-		if (!r) {
-			return "redirect:/";
-		}
+//		GoogleAuthenticator ga = new GoogleAuthenticator();
+//		boolean r = ga.check_code(Config.TOKEN_GOOGLE_KEY, google, System.currentTimeMillis());
+//		if (!r) {
+//			return "redirect:/";
+//		}
 
 		session.setAttribute(ADMIN, Config.TOKEN_DO_LOGIN);
 		return "redirect:/adminLove";
 	}
 
 	/**
-	 * 真实
+	 * 生成验证码
 	 *
 	 * @param request  请求
 	 * @param response 响应

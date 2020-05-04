@@ -12,6 +12,7 @@ public class CommonConstants {
 	public static final String DOT = ".";
 	public static final String CSDN_URL = "https://blog.csdn.net/";
 	public static final String DYTT_URL = "http://www.ygdy8.net/";
+	public static final String IMG_PRIFIX = "images/";
 
 
 }

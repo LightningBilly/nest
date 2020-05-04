@@ -5,7 +5,7 @@ import com.yiyjm.nest.config.CrawlerCsdn;
 import com.yiyjm.nest.config.CrawlerDytt;
 import com.yiyjm.nest.config.FirstPage;
 import com.yiyjm.nest.dao.BlogDao;
-import com.yiyjm.nest.service.IpService;
+import com.yiyjm.nest.tools.IpService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -132,6 +132,14 @@ public class OssImageUtil {
 		return Config.OSS_URL_PREFIX + fileName;
 	}
 
+	/**
+	 * 生成验证码
+	 *
+	 * @param request  request 请求
+	 * @param response response 响应
+	 * @param veriname veriname 验证名称
+	 * @throws IOException IO异常
+	 */
 	public static void getVeri(HttpServletRequest request, HttpServletResponse response, String veriname) throws IOException {
 		int width = 120;
 		int height = 30;

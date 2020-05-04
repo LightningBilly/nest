@@ -79,18 +79,49 @@ public class AdminService {
 		if (image == null || image.getName() == null) {
 			return "删除失败：数据库中不存在";
 		}
+		String result;
+		if (Config.ENABLE_OSS) {
+			boolean deleteOssImageResult = deleteOssImage(iid);
+			if (deleteOssImageResult == true) {
+				result = "文件已删除, ";
+			} else {
+				result = "文件不存在, ";
+			}
+			int resultNum = imageDao.deleteImage(iid);
+			return result + "数据库删除数量：" + resultNum + "，OSS 服务器文件中暂不删除";
+		} else if (Config.ENABLE_LOCAL) {
+			if (deleteLocalImage() == true) {
+				result = "文件已删除, ";
+			} else {
+				result = "文件不存在, ";
+			}
+			int resultNum = imageDao.deleteLocalImage(iid);
+			return result + "数据库删除数量：" + resultNum;
+		}
+		return "删除失败，系统错误";
+	}
 
-		String ossResult;
+	private boolean deleteOssImage(int iid) {
+		boolean result;
+		Image image = imageDao.queryImage(iid);
 		if (OssImageUtil.aliOssExist(image.getName())) {
 			OssImageUtil.aliOssDelete(image.getName());
-			ossResult = "oss 中已删除，";
+			result = true;
 		} else {
-			ossResult = "oss 中不存在，";
+			result = false;
 		}
-
-		int result = imageDao.deleteImage(iid);
-		return ossResult + "数据库删除数量：" + result + "，服务器文件中暂不删除";
+		return result;
 	}
+
+	/**
+	 * 删除本地照片
+	 *
+	 * @return 是否删除
+	 */
+	private boolean deleteLocalImage() {
+		return true;
+	}
+
 
 	/**
 	 * 上传图片

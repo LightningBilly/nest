@@ -7,7 +7,7 @@ import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.AdminService;
 import com.yiyjm.nest.util.CommonConstants;
 import com.yiyjm.nest.util.GoogleAuthenticator;
-import com.yiyjm.nest.util.OssImageUtil;
+import com.yiyjm.nest.util.LocalImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -183,19 +183,19 @@ public class AdminController {
 	@RequestMapping("/veri")
 	public void veri(HttpServletRequest request, HttpServletResponse response) {
 		try {
-			OssImageUtil.getVeri(request, response, "veri");
+			LocalImageUtil.getVeri(request, response, "veri");
 		} catch (IOException e) {
 			logger.info("生成验证码错误");
 		}
 	}
 
 	/**
-	 * 博客
+	 * 根据 bid 编辑博客，bid 没有，创建新的博客
 	 *
 	 * @param map 地图
 	 * @param bid 报价
 	 * @return {@link String}
-	 */// 根据 bid 编辑博客，bid 没有，创建新的博客
+	 */
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
 		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {

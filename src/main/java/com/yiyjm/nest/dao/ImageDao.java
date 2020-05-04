@@ -54,6 +54,15 @@ public interface ImageDao {
 	int deleteImage(@Param("iid") int iid);
 
 	/**
+	 * 删除本地图片
+	 *
+	 * @param iid iid
+	 * @return int
+	 */
+	@Delete("delete from image where iid = #{iid}")
+	int deleteLocalImage(@Param("iid") int iid);
+
+	/**
 	 * 查询图像
 	 *
 	 * @param iid iid

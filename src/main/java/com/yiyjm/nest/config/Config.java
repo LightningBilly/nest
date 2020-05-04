@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 不变的配置在 ConfigEnum 里，前缀默认是 public static final
+ * 不变的配置在 ConfigI 里，前缀默认是 public static final
  * 该类放可变配置（需读取的配置）
  *
  * @author jonny
  * @date 2020/04/30
  */
-public class Config implements ConfigEnum {
+public class Config implements ConfigI {
 
 	/**
 	 * 记录总的ip个数，listener 初始化，每插入一个ip，该值+1

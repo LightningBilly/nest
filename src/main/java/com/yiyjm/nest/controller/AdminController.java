@@ -56,14 +56,14 @@ public class AdminController {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
 		// 本地测试，不需要登陆
-//		if (LOCALHOST_SET.contains(servletName)) {
-//			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-//			return "admin/index";
-//		}
+		if (LOCALHOST_SET.contains(servletName)) {
+			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+			return "admin/index";
+		}
 
-//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-//			return "redirect:/";
-//		}
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+			return "redirect:/";
+		}
 		return "admin/index";
 	}
 

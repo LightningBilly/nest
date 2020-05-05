@@ -42,10 +42,10 @@ public class OssImgServiceImpl implements OssImgService {
 
 	@Override
 	public String deleteImage(Integer iid, Object adminToken) {
-		// 用户鉴权
-		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-			return "删除失败：未授权用户";
-		}
+//		// 用户鉴权
+//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+//			return "删除失败：未授权用户";
+//		}
 
 		Image image = imageDao.queryImage(iid);
 		if (image == null || image.getName() == null) {
@@ -82,12 +82,12 @@ public class OssImgServiceImpl implements OssImgService {
 			folder = Config.OSS_PHOTOS_FOLDER;
 		}
 
-		// 用户鉴权
-		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-			logger.error("上传错误：管理员token错误");
-			map.put("message", "上传错误：管理员token错误");
-			return map;
-		}
+//		// 用户鉴权
+//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+//			logger.error("上传错误：管理员token错误");
+//			map.put("message", "上传错误：管理员token错误");
+//			return map;
+//		}
 
 		// 是否有有效文件
 		if (file == null || file.isEmpty()) {

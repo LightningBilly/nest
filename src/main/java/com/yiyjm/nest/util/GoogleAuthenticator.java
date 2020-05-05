@@ -24,7 +24,9 @@ public class GoogleAuthenticator {
 	private int window_size = 3; // default 3 - max 17 (from google docs)最多可偏移的时间
 
 	/**
-	 * @param name
+	 * 创的秘密
+	 *
+	 * @param name 的名字
 	 * @return {@link String}
 	 */
 	public static String genSecret(String name) {
@@ -57,9 +59,9 @@ public class GoogleAuthenticator {
 	/**
 	 * get qrbarcodeurl
 	 *
-	 * @param user
-	 * @param host
-	 * @param secret
+	 * @param user   用户
+	 * @param host   主机
+	 * @param secret 秘密
 	 * @return {@link String}
 	 */
 	public static String getQRBarcodeURL(String user, String host, String secret) {
@@ -68,10 +70,12 @@ public class GoogleAuthenticator {
 	}
 
 	/**
-	 * @param key
-	 * @param t
-	 * @return int* @throws NoSuchAlgorithmException
-	 * @throws InvalidKeyException
+	 * 验证代码
+	 *
+	 * @param key 关键
+	 * @param t   t
+	 * @return int* @throws NoSuchAlgorithmException 没有这样的算法异常
+	 * @throws InvalidKeyException 无效的关键例外
 	 */
 	private static int verify_code(byte[] key, long t) throws NoSuchAlgorithmException, InvalidKeyException {
 		byte[] data = new byte[8];
@@ -116,14 +120,17 @@ public class GoogleAuthenticator {
 	 * @param s
 	 */
 	private void setWindowSize(int s) {
-		if (s >= 1 && s <= 17)
+		if (s >= 1 && s <= 17) {
 			window_size = s;
+		}
 	}
 
 	/**
-	 * @param secret
-	 * @param code
-	 * @param timeMsec
+	 * 校验码
+	 *
+	 * @param secret   秘密
+	 * @param code     代码
+	 * @param timeMsec 时间毫秒
 	 * @return boolean
 	 */
 	public boolean check_code(String secret, long code, long timeMsec) {

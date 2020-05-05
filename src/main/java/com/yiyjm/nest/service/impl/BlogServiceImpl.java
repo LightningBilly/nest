@@ -75,10 +75,10 @@ public class BlogServiceImpl implements BlogService {
 			return result.error(-1, "内容不存在");
 		}
 
-		// 用户鉴权
-		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-			return result.error(-1, "没有管理员权限，不能修改");
-		}
+//		// 用户鉴权
+//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+//			return result.error(-1, "没有管理员权限，不能修改");
+//		}
 
 		if (blog.getRank() == null) {
 			return result.error(-1, "rank 不存在");

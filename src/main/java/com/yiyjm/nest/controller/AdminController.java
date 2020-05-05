@@ -36,7 +36,7 @@ import java.util.stream.Stream;
  * @date 2020/04/30
  */
 @Controller
-@RequestMapping("/adminLove")
+@RequestMapping("/admin")
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private AdminService adminService;
@@ -56,14 +56,14 @@ public class AdminController {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
 		// 本地测试，不需要登陆
-		if (LOCALHOST_SET.contains(servletName)) {
-			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-			return "admin/index";
-		}
+//		if (LOCALHOST_SET.contains(servletName)) {
+//			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+//			return "admin/index";
+//		}
 
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "redirect:/";
-		}
+//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+//			return "redirect:/";
+//		}
 		return "admin/index";
 	}
 
@@ -76,10 +76,10 @@ public class AdminController {
 	 */
 	@RequestMapping("/login")
 	public String login(ModelMap map, String token) {
-		if (token == null || !token.equals(Config.TOKEN_URL)) {
-			return "redirect:/";
-		}
-		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
+//		if (token == null || !token.equals(Config.TOKEN_URL)) {
+//			return "redirect:/";
+//		}
+//		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
 		return "admin/login";
 	}
 
@@ -103,9 +103,9 @@ public class AdminController {
 	 */
 	@RequestMapping("/image")
 	public String image(ModelMap map, Integer page) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "redirect:/";
-		}
+//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+//			return "redirect:/";
+//		}
 
 		if (page == null || page < 1) {
 			page = 1;
@@ -140,10 +140,10 @@ public class AdminController {
 	@RequestMapping("/doLogin")
 	public String doLogin(String tokenLogin, String veri, String phone, Long google) {
 		String veri1 = (String) session.getAttribute("veri");
-		if (!Config.TOKEN_DO_LOGIN.equals(tokenLogin) || !Config.TOKEN_PHONE.equals(phone)
-				|| veri == null || !veri.equalsIgnoreCase(veri1) || google == null) {
-			return "redirect:/";
-		}
+//		if (!Config.TOKEN_DO_LOGIN.equals(tokenLogin) || !Config.TOKEN_PHONE.equals(phone)
+//				|| veri == null || !veri.equalsIgnoreCase(veri1) || google == null) {
+//			return "redirect:/";
+//		}
 
 //		GoogleAuthenticator ga = new GoogleAuthenticator();
 //		boolean r = ga.check_code(Config.TOKEN_GOOGLE_KEY, google, System.currentTimeMillis());
@@ -151,8 +151,8 @@ public class AdminController {
 //			return "redirect:/";
 //		}
 
-		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-		return "redirect:/adminLove";
+//		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+		return "redirect:/admin";
 	}
 
 	/**
@@ -179,9 +179,9 @@ public class AdminController {
 	 */
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "redirect:/";
-		}
+//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+//			return "redirect:/";
+//		}
 		int bid2 = blogService.gainBlogId(bid);
 		if (bid == null || bid < 0) {
 			return "redirect:blog?bid=" + bid2;
@@ -234,9 +234,9 @@ public class AdminController {
 	@RequestMapping("/crawler")
 	@ResponseBody
 	public String crawler(String kind) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "请先登录";
-		}
+//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+//			return "请先登录";
+//		}
 
 		if (kind == null) {
 			return "类型错误";

@@ -55,12 +55,12 @@ public class LocalImgServiceImpl implements LocalImgService {
 		if (bid < 0) {
 			folder = Config.LOCAL_FILE_ROOT_PATH + Config.LOCAL_PHOTOS_FOLDER;
 		}
-		/* 用户鉴权 */
-		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-			logger.error("上传错误：管理员token错误");
-			resultMap.put("message", "上传错误：管理员token错误");
-			return resultMap;
-		}
+//		/* 用户鉴权 */
+//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+//			logger.error("上传错误：管理员token错误");
+//			resultMap.put("message", "上传错误：管理员token错误");
+//			return resultMap;
+//		}
 		/* 是否为有效文件 */
 		if (file == null || file.isEmpty()) {
 			logger.error("上传错误：文件为空");
@@ -131,10 +131,10 @@ public class LocalImgServiceImpl implements LocalImgService {
 
 	@Override
 	public String deleteImage(Integer iid, Object adminToken) {
-		// 用户鉴权
-		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-			return "删除失败：您并未拥有删除权限。";
-		}
+//		// 用户鉴权
+//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+//			return "删除失败：您并未拥有删除权限。";
+//		}
 		/* 查询处理 */
 		Image image = imageDao.queryImage(iid);
 		if (image == null || image.getName() == null) {

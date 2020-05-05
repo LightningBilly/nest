@@ -53,12 +53,12 @@
 		<div class="row">
 			<div class="col-6 col-sm-6 col-lg-3">
 				<div class="card">
-					<a href="//yiyjm.com/static/photos/3d/index.html" target="_blank">
+					<a href="//yiyjm.com//ablums/3d" target="_blank">
 						<img class="img-thumbnail rounded card-img-top" src="image/index/1.jpg" alt="3D 相册">
 					</a>
 					<div class="card-body">
 						<div class="d-flex justify-content-between align-items-center">
-							<a href="//yiyjm.com/static/photos/3d/index.html" target="_blank"
+							<a href="//yiyjm.com//ablums/3d" target="_blank"
 							   class="btn btn-sm btn-link text-muted"> 3D 相册 </a>
 						</div>
 					</div>

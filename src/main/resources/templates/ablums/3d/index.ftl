@@ -30,7 +30,7 @@
         {img:'ablums/images/p1.jpg', x:-1500, y:0, z:-500, nx:1, nz:0},
         {img:'ablums/images/p2.jpg', x:-1500, y:0, z:500, nx:1, nz:0}]
 </script>
-<script type="text/javascript" src="ablums/js/ge1doot.min.js"></script>
-<script type="text/javascript" src="ablums/js/index.min.js"></script>
+<script type="text/javascript" src="js/ge1doot.min.js"></script>
+<script type="text/javascript" src="js/index.min.js"></script>
 </body>
 </html>

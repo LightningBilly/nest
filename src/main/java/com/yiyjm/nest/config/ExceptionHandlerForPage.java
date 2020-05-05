@@ -29,7 +29,7 @@ public class ExceptionHandlerForPage {
 		logger.warn("ExceptionMessage：" + e.getMessage());
 		logger.warn("ExceptionCause：" + e.getCause());
 		JsonResult<String> result = new JsonResult<>();
-		return result.error(-1, "thinkphp遇到错误，请查看日志");
+		return result.error(-1, "服务器遇到错误，请查看日志");
 	}
 
 }

@@ -35,7 +35,7 @@ public class ExceptionHandlerForJson {
 		logger.warn("MultipartgetCause：" + e.getCause());
 		Map<String, Object> map = new HashMap<>();
 		map.put("success", 0);
-		map.put("message", "上传错误：图片大小超过指定值。建议10M以内");
+		map.put("message", "上传错误：图片大小超过指定值。建议20M以内");
 		return map;
 	}
 
@@ -51,7 +51,7 @@ public class ExceptionHandlerForJson {
 		logger.warn("ExceptionMessage：" + e.getMessage());
 		logger.warn("ExceptionCause：" + e.getCause());
 		JsonResult<String> result = new JsonResult<>();
-		return result.error(-1, "thinkphp遇到错误，请查看日志");
+		return result.error(-1, "服务器遇到错误，请查看日志");
 	}
 
 }

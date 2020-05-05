@@ -1,6 +1,11 @@
-# nest - 伊阳静美 - 情侣专属网站。
+# nest - 伊阳静美。
 
 ---
+
+本项目来自于开源项目 ： [lovers-website](https://github.com/katanala/lovers-website)
+
+ 项目进行了大量的优化，遵循阿里巴巴开发手册;
+ 所有service 进行抽象化，增加本地存储功能，目前项目正在开发中。。。
 
 ## 简介
 

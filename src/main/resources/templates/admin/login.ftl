@@ -16,7 +16,8 @@
 
 <div class="container mt-3">
 	<form action="doLogin" method="post">
-		<input type="hidden" name="tokenLogin" id="tokenLogin" value="${tokenLogin}">
+<#--		<input type="hidden" name="tokenLogin" id="tokenLogin" value="${tokenLogin}">-->
+		<input type="button" name="tokenLogin" id="tokenLogin" value="${tokenLogin}">
 		<div class="form-group">
 			<label for="phone">手机号：</label>
 			<input type="password" class="form-control" id="phone" name="phone" placeholder="手机号">

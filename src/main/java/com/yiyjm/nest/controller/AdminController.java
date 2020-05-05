@@ -76,10 +76,10 @@ public class AdminController {
 	 */
 	@RequestMapping("/login")
 	public String login(ModelMap map, String token) {
-//		if (token == null || !token.equals(Config.TOKEN_URL)) {
-//			return "redirect:/";
-//		}
-//		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
+		if (token == null || !token.equals(Config.TOKEN_URL)) {
+			return "redirect:/";
+		}
+		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
 		return "admin/login";
 	}
 

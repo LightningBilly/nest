@@ -62,7 +62,7 @@ public class AdminController {
 		}
 
 		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "redirect:/";
+			return "admin/login";
 		}
 		return "admin/index";
 	}
@@ -76,9 +76,9 @@ public class AdminController {
 	 */
 	@RequestMapping("/login")
 	public String login(ModelMap map, String token) {
-		if (token == null || !token.equals(Config.TOKEN_URL)) {
-			return "redirect:/";
-		}
+//		if (token == null || !token.equals(Config.TOKEN_URL)) {
+//			return "redirect:/";
+//		}
 		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
 		return "admin/login";
 	}

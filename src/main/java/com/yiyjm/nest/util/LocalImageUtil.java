@@ -23,7 +23,7 @@ public class LocalImageUtil {
 	 * @param input 输入
 	 */
 	public static void uploadLocalImg(String name, InputStream input) {
-		String path = ConfigI.LOCAL_FILE_PATH + ConfigI.IMAGES_FOLDER_NAME;
+//		String path = ConfigI.LOCAL_FILE_PATH + ConfigI.IMAGES_FOLDER_NAME;
 
 		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);

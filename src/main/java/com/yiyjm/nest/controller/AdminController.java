@@ -7,6 +7,7 @@ import com.yiyjm.nest.config.CrawlerDytt;
 import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.AdminService;
 import com.yiyjm.nest.service.BlogService;
+import com.yiyjm.nest.service.LocalImgService;
 import com.yiyjm.nest.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +40,7 @@ import java.util.stream.Stream;
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private AdminService adminService;
+	private LocalImgService localImgService;
 	private BlogService blogService;
 	private HttpSession session;
 	private static final Set<String> LOCALHOST_SET = Stream.of("127.0.0.1", "localhost").collect(Collectors.toSet());
@@ -109,14 +111,14 @@ public class AdminController {
 			page = 1;
 		}
 
-		int total = adminService.countImage();
+		int total = localImgService.countImage();
 		int number = Config.PAGE_NUMBER;
 
 		int allpage = total % number == 0 ? total / number : total / number + 1;
 		if (allpage < 1) {
 			allpage = 1;
 		}
-		List<Image> images = adminService.listImage(page, number);
+		List<Image> images = localImgService.listImage(page, number);
 
 		map.put("total", total);
 		map.put("allpage", allpage);
@@ -208,7 +210,7 @@ public class AdminController {
 	@RequestMapping("/uploadImage")
 	@ResponseBody
 	public Map<String, Object> uploadImage(@RequestParam("editormd-image-file") MultipartFile file, Integer bid) {
-		return adminService.uploadImage(file, bid, session.getAttribute(CommonConstants.ADMIN));
+		return localImgService.uploadImage(file, bid, session.getAttribute(CommonConstants.ADMIN));
 	}
 
 	/**
@@ -220,7 +222,7 @@ public class AdminController {
 	@RequestMapping("/deleteImage")
 	@ResponseBody
 	public String deleteImage(Integer iid) {
-		return adminService.deleteImage(iid, session.getAttribute(CommonConstants.ADMIN));
+		return localImgService.deleteImage(iid, session.getAttribute(CommonConstants.ADMIN));
 	}
 
 	/**
@@ -264,4 +266,7 @@ public class AdminController {
 		this.session = session;
 	}
 
+	public void setLocalImgService(LocalImgService localImgService) {
+		this.localImgService = localImgService;
+	}
 }

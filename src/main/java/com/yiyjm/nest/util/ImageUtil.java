@@ -15,8 +15,16 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Random;
+import java.util.logging.Logger;
 
+/**
+ * 图像跑龙套
+ *
+ * @author Jonny.Chang
+ * @date 2020/05/05
+ */
 public class ImageUtil {
+	final Logger logger = Logger.getLogger("com.yiyjm.nest.util.ImageUtil");
 
 	/**
 	 * 压缩图片
@@ -145,7 +153,7 @@ public class ImageUtil {
 	private static String drawRandomNum(Graphics2D g) {
 		StringBuilder sb = new StringBuilder();
 		g.setFont(new Font("cmr10", Font.BOLD, 20));
-		String base = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ";
+		String base = CommonConstants.BASE_CHAR;
 		int x = 5;
 		for (int i = 0; i < 4; i++) {
 			int R = new Random().nextInt(256);
@@ -162,5 +170,4 @@ public class ImageUtil {
 		}
 		return sb.toString();
 	}
-
 }

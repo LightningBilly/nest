@@ -36,7 +36,7 @@ import java.util.stream.Stream;
  * @date 2020/04/30
  */
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("/dilys")
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private AdminService adminService;
@@ -58,13 +58,13 @@ public class AdminController {
 		// 本地测试，不需要登陆
 //		if (LOCALHOST_SET.contains(servletName)) {
 //			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-//			return "admin/index";
+//			return "dilys/index";
 //		}
 
 //		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
 //			return "redirect:/";
 //		}
-		return "admin/index";
+		return "dilys/index";
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class AdminController {
 //			return "redirect:/";
 //		}
 //		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
-		return "admin/login";
+		return "dilys/login";
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class AdminController {
 		map.put("curpage", page);
 		map.put("images", images);
 		map.put("ossUrl", Config.OSS_URL_PREFIX);
-		return "admin/image";
+		return "dilys/image";
 	}
 
 	/**
@@ -152,7 +152,7 @@ public class AdminController {
 //		}
 
 //		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-		return "redirect:/admin";
+		return "redirect:/dilys";
 	}
 
 	/**
@@ -187,7 +187,7 @@ public class AdminController {
 			return "redirect:blog?bid=" + bid2;
 		}
 		map.put("bid", bid2);
-		return "admin/blog";
+		return "dilys/blog";
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/blogs")
 	public String blogs() {
-		return "admin/blogs";
+		return "dilys/blogs";
 	}
 
 	/**

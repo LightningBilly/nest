@@ -1,6 +1,9 @@
 package com.yiyjm.nest.service;
 
 import com.yiyjm.nest.entity.Image;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -12,6 +15,7 @@ import java.util.Map;
  * @author Jonny.Chang
  * @date 2020/05/05
  */
+@Service
 public interface AdminService {
 	/**
 	 * 删除图片
@@ -20,6 +24,7 @@ public interface AdminService {
 	 * @param adminToken 管理令牌
 	 * @return {@link String}
 	 */
+	@Transactional(propagation = Propagation.REQUIRED)
 	String deleteImage(Integer iid, Object adminToken);
 
 	/**
@@ -30,6 +35,7 @@ public interface AdminService {
 	 * @param adminToken 管理令牌
 	 * @return {@link Map<String, Object>}
 	 */
+	@Transactional(propagation = Propagation.REQUIRED)
 	Map<String, Object> uploadImage(MultipartFile file, Integer bid, Object adminToken);
 
 	/**
@@ -37,6 +43,7 @@ public interface AdminService {
 	 *
 	 * @return int
 	 */
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	int countImage();
 
 	/**
@@ -46,6 +53,7 @@ public interface AdminService {
 	 * @param number 数量
 	 * @return {@link List<Image>}
 	 */
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	List<Image> listImage(int page, int number);
 
 	/**
@@ -54,6 +62,7 @@ public interface AdminService {
 	 * @param startUrl 开始的url
 	 * @param t        t
 	 */
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	void crawler(String startUrl, Class t);
 
 }

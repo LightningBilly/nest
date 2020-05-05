@@ -2,7 +2,8 @@ package com.yiyjm.nest.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.yiyjm.nest.entity.Chat;
-import com.yiyjm.nest.tools.ChatService;
+import com.yiyjm.nest.service.ChatService;
+import com.yiyjm.nest.service.CommonService;
 import com.yiyjm.nest.util.Jackson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,13 @@ public class ChatSocketController {
 	 */
 	private static ChatService chatService;
 	private Session session;
+
+	private static CommonService commonService;
+
+	@Autowired
+	public void setCommonService(CommonService commonService) {
+		ChatSocketController.commonService = commonService;
+	}
 
 	/**
 	 * 聊天插座控制器
@@ -94,7 +102,7 @@ public class ChatSocketController {
 		}
 
 		// 防刷消息
-		if (!chatService.isSafe(session)) {
+		if (!commonService.isSafe(session)) {
 			logger.error("终止聊天：防刷拦截。");
 			return;
 		}

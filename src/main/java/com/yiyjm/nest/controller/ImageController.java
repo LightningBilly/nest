@@ -1,7 +1,7 @@
 package com.yiyjm.nest.controller;
 
 import com.yiyjm.nest.entity.Image;
-import com.yiyjm.nest.tools.ImageService;
+import com.yiyjm.nest.service.MediaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,17 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/image")
 public class ImageController {
-	private ImageService imageService;
-
-	/**
-	 * 设置图像服务
-	 *
-	 * @param imageService 形象服务
-	 */
-	@Autowired
-	public void setImageService(ImageService imageService) {
-		this.imageService = imageService;
-	}
+	private MediaService mediaService;
 
 	/**
 	 * 列表
@@ -40,7 +30,11 @@ public class ImageController {
 	@RequestMapping("/list")
 	@ResponseBody
 	public List<Image> list(Integer iid, Integer per) {
-		return imageService.list(iid, per);
+		return mediaService.imagesList(iid, per);
 	}
 
+	@Autowired
+	public void setMediaService(MediaService mediaService) {
+		this.mediaService = mediaService;
+	}
 }

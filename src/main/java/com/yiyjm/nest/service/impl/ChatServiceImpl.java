@@ -1,30 +1,33 @@
-package com.yiyjm.nest.tools;
+package com.yiyjm.nest.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.yiyjm.nest.config.Config;
+import com.yiyjm.nest.common.CommonConstants;
 import com.yiyjm.nest.dao.ChatDao;
 import com.yiyjm.nest.entity.Chat;
+import com.yiyjm.nest.service.ChatService;
 import com.yiyjm.nest.util.Jackson;
 import com.yiyjm.nest.util.RobotUtil;
 import com.yiyjm.nest.util.XssUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
-import javax.websocket.Session;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-@Service
-public class ChatService {
-	private static final Logger logger = LoggerFactory.getLogger(ChatService.class);
+/**
+ * 聊天服务实现类
+ *
+ * @author Jonny.Chang
+ * @date 2020/05/05
+ */
+@Component("chatServiceId")
+public class ChatServiceImpl implements ChatService {
+
+	private static final Logger logger = LoggerFactory.getLogger(com.yiyjm.nest.service.ChatService.class);
 	private ChatDao chatDao;
 
 	@Autowired
@@ -32,7 +35,7 @@ public class ChatService {
 		this.chatDao = chatDao;
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
 	public Chat insertMessage(String object) {
 		Chat message = null;
 		try {
@@ -57,7 +60,7 @@ public class ChatService {
 		return message;
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
 	public Chat insertRobotMessage(String content) {
 		String text = RobotUtil.getRobotMessage(content);
 		if (text == null) {
@@ -82,7 +85,7 @@ public class ChatService {
 		return robotMessage;
 	}
 
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	@Override
 	public String getRecentMessage(String max) {
 		int maxtemp = 0;
 
@@ -107,7 +110,7 @@ public class ChatService {
 		return json;
 	}
 
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	@Override
 	public List<Chat> list(int cid, int number) {
 		if (number > 32) {
 			number = 32;
@@ -120,8 +123,9 @@ public class ChatService {
 		return chatDao.list(cid, number);
 	}
 
+	@Override
 	public boolean isNumber(String str) {
-		if (str == null || str.equals("")) {
+		if (str == null || str.equals(CommonConstants.BLAN)) {
 			return false;
 		}
 		for (int i = 0; i < str.length(); i++) {
@@ -130,28 +134,5 @@ public class ChatService {
 			}
 		}
 		return true;
-	}
-
-	public synchronized boolean isSafe(Session session) {
-		// 去掉超过3秒未说话的，不是灌水的
-		long nowTime = System.currentTimeMillis();
-		Iterator<Map.Entry<String, Long>> iterator = Config.RECORD_CHAT_ID.entrySet().iterator();
-		while (iterator.hasNext()) {
-			Map.Entry<String, Long> next = iterator.next();
-			Long oldtime = next.getValue();
-			if (nowTime - oldtime > 3000) {
-				iterator.remove();
-			}
-		}
-
-		// 检测当前的id
-		Long oldtime = Config.RECORD_CHAT_ID.get(session.getId());
-		// 如果没有记录过Ip，表示没有操作过，放行。否则是1s内操作过，阻止。
-		if (oldtime == null) {
-			Config.RECORD_CHAT_ID.put(session.getId(), System.currentTimeMillis());
-			return true;
-		} else {
-			return false;
-		}
 	}
 }

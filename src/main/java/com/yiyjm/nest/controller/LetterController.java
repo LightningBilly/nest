@@ -2,7 +2,7 @@ package com.yiyjm.nest.controller;
 
 import com.yiyjm.nest.config.JsonResult;
 import com.yiyjm.nest.entity.Letter;
-import com.yiyjm.nest.tools.LetterService;
+import com.yiyjm.nest.service.LetterService;
 import com.yiyjm.nest.util.IpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

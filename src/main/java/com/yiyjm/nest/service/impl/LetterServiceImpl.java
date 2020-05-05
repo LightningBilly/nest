@@ -1,36 +1,37 @@
-package com.yiyjm.nest.tools;
+package com.yiyjm.nest.service.impl;
 
 import com.yiyjm.nest.config.Config;
 import com.yiyjm.nest.config.JsonResult;
 import com.yiyjm.nest.dao.LetterDao;
 import com.yiyjm.nest.entity.Letter;
+import com.yiyjm.nest.service.LetterService;
+import com.yiyjm.nest.service.MailService;
 import com.yiyjm.nest.util.XssUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * LetterService
+ * 信服务实现类
  *
- * @author jonny
- * @date 2020/04/30
+ * @author Jonny.Chang
+ * @date 2020/05/05
  */
-@Service
-public class LetterService {
-	private static final Logger logger = LoggerFactory.getLogger(LetterService.class);
+@Component("letterServiceId")
+public class LetterServiceImpl implements LetterService {
+
+	private static final Logger logger = LoggerFactory.getLogger(com.yiyjm.nest.service.LetterService.class);
 	private LetterDao letterDao;
 	private MailService mailService;
 
 	/**
-	 * set letter Dao
+	 * set 信 Dao
 	 *
-	 * @param letterDao letter Dao
+	 * @param letterDao 信 Dao
 	 */
 	@Autowired
 	public void setLetterDao(LetterDao letterDao) {
@@ -38,22 +39,16 @@ public class LetterService {
 	}
 
 	/**
-	 * set mailservice
+	 * set 邮件服务
 	 *
-	 * @param mailService
+	 * @param mailService 邮件服务
 	 */
 	@Autowired
 	public void setMailService(MailService mailService) {
 		this.mailService = mailService;
 	}
 
-	/**
-	 * @param lid
-	 * @param number
-	 * @param isRand
-	 * @return {@link List<Letter>}
-	 */
-	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	@Override
 	public List<Letter> listLetter(Integer lid, Integer number, Boolean isRand) {
 		if (lid == null || lid <= 0) {
 			lid = Integer.MAX_VALUE;
@@ -87,13 +82,7 @@ public class LetterService {
 		}
 	}
 
-	/**
-	 * @param ip
-	 * @param nickname
-	 * @param content
-	 * @return {@link JsonResult<String>}
-	 */
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
 	public JsonResult<String> insertLetter(String ip, String nickname, String content) {
 		JsonResult<String> result = new JsonResult<>();
 
@@ -147,10 +136,7 @@ public class LetterService {
 		return result.ok(null, "留言成功");
 	}
 
-	/**
-	 * @param lid
-	 */
-	@Transactional(propagation = Propagation.REQUIRED)
+	@Override
 	public void zanLetter(int lid) {
 		letterDao.zanLetter(lid);
 		Config.lastLetter4 = null;

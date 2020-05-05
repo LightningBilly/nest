@@ -1,11 +1,12 @@
 package com.yiyjm.nest.controller;
 
+import com.yiyjm.nest.common.CommonConstants;
 import com.yiyjm.nest.config.Config;
 import com.yiyjm.nest.config.CrawlerCsdn;
 import com.yiyjm.nest.config.CrawlerDytt;
 import com.yiyjm.nest.entity.Image;
-import com.yiyjm.nest.tools.AdminService;
-import com.yiyjm.nest.common.CommonConstants;
+import com.yiyjm.nest.service.AdminService;
+import com.yiyjm.nest.service.BlogService;
 import com.yiyjm.nest.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,6 +39,7 @@ import java.util.stream.Stream;
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	private AdminService adminService;
+	private BlogService blogService;
 	private HttpSession session;
 	private static final Set<String> LOCALHOST_SET = Stream.of("127.0.0.1", "localhost").collect(Collectors.toSet());
 	private static final String CSDN = "csdn";
@@ -51,6 +55,15 @@ public class AdminController {
 	@Autowired
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
+	}
+
+	/**
+	 * set 博客服务
+	 *
+	 * @param blogService 博客服务
+	 */
+	public void setBlogService(BlogService blogService) {
+		this.blogService = blogService;
 	}
 
 	/**
@@ -200,7 +213,7 @@ public class AdminController {
 		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
 			return "redirect:/";
 		}
-		int bid2 = adminService.gainBlogId(bid);
+		int bid2 = blogService.gainBlogId(bid);
 		if (bid == null || bid < 0) {
 			return "redirect:blog?bid=" + bid2;
 		}

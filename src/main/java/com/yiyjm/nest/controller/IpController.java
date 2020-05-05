@@ -1,7 +1,8 @@
 package com.yiyjm.nest.controller;
 
 import com.yiyjm.nest.entity.Ip;
-import com.yiyjm.nest.tools.IpService;
+import com.yiyjm.nest.service.CommonService;
+import com.yiyjm.nest.service.IpService;
 import com.yiyjm.nest.util.IpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,16 +24,7 @@ import java.util.Map;
 @RequestMapping("/ip")
 public class IpController {
 	private IpService ipService;
-
-	/**
-	 * 设置ip服务
-	 *
-	 * @param ipService 知识产权服务
-	 */
-	@Autowired
-	public void setIpService(IpService ipService) {
-		this.ipService = ipService;
-	}
+	private CommonService commonService;
 
 	/**
 	 * 添加ip
@@ -56,7 +48,7 @@ public class IpController {
 	@PostMapping("/chartStatic")
 	@ResponseBody
 	public Map<String, Object> chartStatic() {
-		return ipService.chartStatic();
+		return commonService.chartStatic();
 	}
 
 	/**
@@ -71,4 +63,14 @@ public class IpController {
 	public List<Ip> listIp(Integer page, Integer per) {
 		return ipService.listIp(page, per);
 	}
+	@Autowired
+	public void setIpService(IpService ipService) {
+		this.ipService = ipService;
+	}
+
+	@Autowired
+	public void setCommonService(CommonService commonService) {
+		this.commonService = commonService;
+	}
+
 }

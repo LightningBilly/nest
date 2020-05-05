@@ -1,7 +1,6 @@
 package com.yiyjm.nest.service.impl;
 
 import com.yiyjm.nest.config.Config;
-import com.yiyjm.nest.dao.BlogDao;
 import com.yiyjm.nest.dao.ImageDao;
 import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.AdminService;
@@ -15,6 +14,7 @@ import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -31,9 +31,10 @@ import java.util.Map;
  * @author Jonny.Chang
  * @date 2020/05/05
  */
+@Component("adminServiceId")
 public class AdminServiceImpl implements AdminService {
 
-	private static final Logger logger = LoggerFactory.getLogger(com.yiyjm.nest.tools.AdminService.class);
+	private static final Logger logger = LoggerFactory.getLogger(com.yiyjm.nest.service.AdminService.class);
 	private ImageDao imageDao;
 	private static final String GIF = ".gif";
 	private static final String JPG = ".jpg";

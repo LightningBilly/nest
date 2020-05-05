@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 	<meta name="Keywords" content="${firstPage.keywords}"/>
 	<meta name="description" content="${firstPage.description}"/>
-	<title>小窝-后台-登录</title>
+	<title>伊阳静美-后台-登录</title>
 	<link rel="stylesheet" type="text/css" href="${firstPage.cdnBootstrapCss}"/>
 </head>
 

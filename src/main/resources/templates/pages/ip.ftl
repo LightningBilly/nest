@@ -19,7 +19,7 @@
 
 <div class="jumbotron">
 	<div class="container">
-		<h3>小窝 : ${ipCount}次访问</h3>
+		<h3>伊阳静美 : ${ipCount}次访问</h3>
 	</div>
 	<span id="visitor"></span>
 </div>

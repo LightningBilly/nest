@@ -21,7 +21,7 @@ public class OssImageUtil {
 	 * @param input 输入
 	 */
 	public static void uploadAliOss(String name, InputStream input) {
-		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
+		OSSClient ossClient = new OSSClient(Config.HTTPS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		// 上传内容到指定的存储空间（bucketName）并保存为指定的文件名称（objectName）。
 		ossClient.putObject(Config.OSS_BUCKET_NAME, name, input);
@@ -35,7 +35,7 @@ public class OssImageUtil {
 	 * @return boolean
 	 */
 	public static boolean aliOssExist(String name) {
-		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
+		OSSClient ossClient = new OSSClient(Config.HTTPS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		return ossClient.doesObjectExist(Config.OSS_BUCKET_NAME, name);
 	}
@@ -46,7 +46,7 @@ public class OssImageUtil {
 	 * @param name 的名字
 	 */
 	public static void aliOssDelete(String name) {
-		OSSClient ossClient = new OSSClient(Config.OSS_PROTOCOL + Config.OSS_ENDPOINT,
+		OSSClient ossClient = new OSSClient(Config.HTTPS_PROTOCOL + Config.OSS_ENDPOINT,
 				Config.OSS_ACCESS_KEY_ID, Config.OSS_ACCESS_KEY_SECRET);
 		ossClient.deleteObject(Config.OSS_BUCKET_NAME, name);
 	}

@@ -124,7 +124,7 @@ public class AdminController {
 		map.put("allpage", allpage);
 		map.put("curpage", page);
 		map.put("images", images);
-		map.put("ossUrl", Config.OSS_URL_PREFIX);
+		map.put("ossUrl", Config.LOCAL_URL_PREFIX);
 		return "admin/image";
 	}
 

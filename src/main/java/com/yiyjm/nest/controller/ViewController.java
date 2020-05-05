@@ -76,7 +76,7 @@ public class ViewController {
 	 */
 	@RequestMapping("/falls")
 	public String falls(ModelMap map) {
-		map.put("prefix", Config.OSS_URL_PREFIX);
+		map.put("prefix", Config.LOCAL_URL_PREFIX);
 		return "pages/falls";
 	}
 

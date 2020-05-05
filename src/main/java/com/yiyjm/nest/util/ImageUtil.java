@@ -24,7 +24,6 @@ import java.util.logging.Logger;
  * @date 2020/05/05
  */
 public class ImageUtil {
-	final Logger logger = Logger.getLogger("com.yiyjm.nest.util.ImageUtil");
 
 	/**
 	 * 压缩图片

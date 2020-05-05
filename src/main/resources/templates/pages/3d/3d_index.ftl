@@ -39,16 +39,16 @@
 
 <script type="text/javascript">
 	var imgdata = [
-		{img: 'images/p7.jpg', x: -500, y: 0, z: 1500, nx: 0, nz: 1},
-		{img: 'images/p3.jpg', x: 500, y: 0, z: 1500, nx: 0, nz: 1},
-		{img: 'images/p8.jpg', x: 1500, y: 0, z: 500, nx: -1, nz: 0},
-		{img: 'images/p4.jpg', x: 1500, y: 0, z: -500, nx: -1, nz: 0},
-		{img: 'images/p5.jpg', x: 500, y: 0, z: -1500, nx: 0, nz: -1},
-		{img: 'images/p6.jpg', x: -500, y: 0, z: -1500, nx: 0, nz: -1},
-		{img: 'images/p1.jpg', x: -1500, y: 0, z: -500, nx: 1, nz: 0},
-		{img: 'images/p2.jpg', x: -1500, y: 0, z: 500, nx: 1, nz: 0}]
+		{img: 'image/ablums/3d/p7.jpg', x: -500, y: 0, z: 1500, nx: 0, nz: 1},
+		{img: 'image/ablums/3d/p3.jpg', x: 500, y: 0, z: 1500, nx: 0, nz: 1},
+		{img: 'image/ablums/3d/p8.jpg', x: 1500, y: 0, z: 500, nx: -1, nz: 0},
+		{img: 'image/ablums/3d/p4.jpg', x: 1500, y: 0, z: -500, nx: -1, nz: 0},
+		{img: 'image/ablums/3d/p5.jpg', x: 500, y: 0, z: -1500, nx: 0, nz: -1},
+		{img: 'image/ablums/3d/p6.jpg', x: -500, y: 0, z: -1500, nx: 0, nz: -1},
+		{img: 'image/ablums/3d/p1.jpg', x: -1500, y: 0, z: -500, nx: 1, nz: 0},
+		{img: 'image/ablums/3d/p2.jpg', x: -1500, y: 0, z: 500, nx: 1, nz: 0}]
 </script>
-<script type="text/javascript" src="js/ge1doot.min.js"></script>
-<script type="text/javascript" src="js/index.min.js"></script>
+<script type="text/javascript" src="js/3d/ge1doot.min.js"></script>
+<script type="text/javascript" src="js/3d/index.min.js"></script>
 </body>
 </html>

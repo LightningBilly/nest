@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class AblumsController {
-	@RequestMapping("/ablums/3d")
+	@RequestMapping("ablums/3d")
 	public String threePhoto() {
 		return "ablums/3d/index";
 	}

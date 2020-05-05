@@ -18,7 +18,7 @@
 <div class="container">
 
 	<h2 class="text-center">上传图片</h2>
-	<form action="/adminLove/uploadImage" method="post" enctype="multipart/form-data">
+	<form action="/dilys/uploadImage" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="image">上传图片：每次限一张，20M以内，格式：jpg,png,gif,bmp,jpeg</label>
 			<input required id="image" type="file" name="editormd-image-file" accept="image/*" class="form-control"/>
@@ -52,7 +52,7 @@
 				<td><img height="120px" src="${ossUrl}${image.name}"></td>
 				<td>${ossUrl}${image.name}</td>
 				<td>
-					<a href="/adminLove/deleteImage?iid=${image.iid}">删除</a>
+					<a href="/dilys/deleteImage?iid=${image.iid}">删除</a>
 				</td>
 			</tr>
 		</#list>
@@ -78,7 +78,7 @@
 	setPage(Number(${curpage}), Number(${allpage}), "getMsg");
 
 	function getMsg(p) {
-		location.href = "/adminLove/image?page=" + p;
+		location.href = "/dilys/image?page=" + p;
 	}
 </script>
 </body>

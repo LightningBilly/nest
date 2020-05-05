@@ -42,39 +42,6 @@ public class AdminController {
 	private BlogService blogService;
 	private HttpSession session;
 	private static final Set<String> LOCALHOST_SET = Stream.of("127.0.0.1", "localhost").collect(Collectors.toSet());
-	private static final String CSDN = "csdn";
-	private static final String DYTT = "dytt";
-	private static final String ADMIN = "admin";
-
-
-	/**
-	 * 设置管理服务
-	 *
-	 * @param adminService 管理服务
-	 */
-	@Autowired
-	public void setAdminService(AdminService adminService) {
-		this.adminService = adminService;
-	}
-
-	/**
-	 * set 博客服务
-	 *
-	 * @param blogService 博客服务
-	 */
-	public void setBlogService(BlogService blogService) {
-		this.blogService = blogService;
-	}
-
-	/**
-	 * 设置会话
-	 *
-	 * @param session 会话
-	 */
-	@Autowired
-	public void setSession(HttpSession session) {
-		this.session = session;
-	}
 
 	/**
 	 * 指数
@@ -88,11 +55,11 @@ public class AdminController {
 		logger.info("servletName：" + servletName);
 		// 本地测试，不需要登陆
 		if (LOCALHOST_SET.contains(servletName)) {
-			session.setAttribute(ADMIN, Config.TOKEN_DO_LOGIN);
+			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
 			return "admin/index";
 		}
 
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
 			return "redirect:/";
 		}
 		return "admin/index";
@@ -121,7 +88,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/logout")
 	public String logout() {
-		session.removeAttribute(ADMIN);
+		session.removeAttribute(CommonConstants.ADMIN);
 		return "redirect:/";
 	}
 
@@ -134,7 +101,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/image")
 	public String image(ModelMap map, Integer page) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
 			return "redirect:/";
 		}
 
@@ -182,7 +149,7 @@ public class AdminController {
 //			return "redirect:/";
 //		}
 
-		session.setAttribute(ADMIN, Config.TOKEN_DO_LOGIN);
+		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
 		return "redirect:/adminLove";
 	}
 
@@ -210,7 +177,7 @@ public class AdminController {
 	 */
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
 			return "redirect:/";
 		}
 		int bid2 = blogService.gainBlogId(bid);
@@ -241,7 +208,7 @@ public class AdminController {
 	@RequestMapping("/uploadImage")
 	@ResponseBody
 	public Map<String, Object> uploadImage(@RequestParam("editormd-image-file") MultipartFile file, Integer bid) {
-		return adminService.uploadImage(file, bid, session.getAttribute(ADMIN));
+		return adminService.uploadImage(file, bid, session.getAttribute(CommonConstants.ADMIN));
 	}
 
 	/**
@@ -253,7 +220,7 @@ public class AdminController {
 	@RequestMapping("/deleteImage")
 	@ResponseBody
 	public String deleteImage(Integer iid) {
-		return adminService.deleteImage(iid, session.getAttribute(ADMIN));
+		return adminService.deleteImage(iid, session.getAttribute(CommonConstants.ADMIN));
 	}
 
 	/**
@@ -265,15 +232,15 @@ public class AdminController {
 	@RequestMapping("/crawler")
 	@ResponseBody
 	public String crawler(String kind) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(ADMIN))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
 			return "请先登录";
 		}
 
 		if (kind == null) {
 			return "类型错误";
-		} else if (kind.equals(CSDN)) {
+		} else if (kind.equals(CommonConstants.CSDN)) {
 			adminService.crawler(CommonConstants.CSDN_URL, CrawlerCsdn.class);
-		} else if (kind.equals(DYTT)) {
+		} else if (kind.equals(CommonConstants.DYTT)) {
 			adminService.crawler(CommonConstants.DYTT_URL, CrawlerDytt.class);
 		} else {
 			return "类型错误";
@@ -281,4 +248,20 @@ public class AdminController {
 
 		return "正在爬取中，请查看日志";
 	}
+
+	@Autowired
+	public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
+	}
+
+	@Autowired
+	public void setBlogService(BlogService blogService) {
+		this.blogService = blogService;
+	}
+
+	@Autowired
+	public void setSession(HttpSession session) {
+		this.session = session;
+	}
+
 }

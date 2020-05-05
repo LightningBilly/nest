@@ -91,7 +91,7 @@
 			path: "../editormd/lib/",
 			placeholder: "请输入内容...",
 			imageUpload: true,
-			imageUploadURL: "/dilys/uploadImage?bid=" + bid,
+			imageUploadURL: "/admin/uploadImage?bid=" + bid,
 			toolbarIcons: function () {
 				return ["undo", "redo", "clear",
 					"|", "quote", "hr", "list-ul", "list-ol", "table",

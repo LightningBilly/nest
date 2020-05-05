@@ -18,7 +18,7 @@
 <div class="container mt-3">
 	<button class="btn btn-primary" onclick="crawler('csdn')">爬取博客</button>
 	<button class="btn btn-primary" onclick="crawler('dytt')">爬取电影</button>
-	<a class="btn btn-warning" href="dilys/logout">安全退出</a>
+	<a class="btn btn-warning" href="admin/logout">安全退出</a>
 
 	<hr/>
 
@@ -36,7 +36,7 @@
 <script>
 	function crawler(kind) {
 		alert("已开始爬取，勿重复点击，请查看日志");
-		$.get("/dilys/crawler", {kind: kind}, function (data) {
+		$.get("/admin/crawler", {kind: kind}, function (data) {
 			alert(data);
 		}, "json");
 	}

@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-  <meta name="Keywords" content="冯芸霄,张圣晨,fengyunxiao,zhangshengchen" />
-  <meta name="description" content="张圣晨,冯芸霄,fengyunxiao,zhangshengchen" />
+  <meta name="Keywords" content="张向阳,吕静,Jonny.Chang,Dilys.Lyu" />
+  <meta name="description" content="张向阳,吕静,Jonny.Chang,Dilys.Lyu" />
   <title>我们的画展</title>
   <style type="text/css">
     html {overflow:hidden; touch-action:none;content-zooming:none;}

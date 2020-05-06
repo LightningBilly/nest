@@ -15,4 +15,9 @@ public class AblumsController {
 	public String threePhoto() {
 		return "ablums/3d/index";
 	}
+
+	@RequestMapping("ablums/ipresenter")
+	public String ipresenter() {
+		return "ablums/ipresenter/index";
+	}
 }

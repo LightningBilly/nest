@@ -20,4 +20,10 @@ public class AblumsController {
 	public String ipresenter() {
 		return "ablums/ipresenter/index";
 	}
+
+	@RequestMapping("ablums/rotates")
+	public String rotates() {
+		return "ablums/rotates/index";
+	}
+
 }

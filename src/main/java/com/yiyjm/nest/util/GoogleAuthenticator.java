@@ -132,6 +132,10 @@ public class GoogleAuthenticator {
 	 * @param code     代码
 	 * @param timeMsec 时间毫秒
 	 * @return boolean
+	 * 您的客户端 ID
+	 * 423673846715-853t1fiahpgoullm4uua944dbp9f6bat.apps.googleusercontent.com
+	 * 您的客户端 密钥
+	 * Sv0-jyyQyocFlbG3LIDT1AAi
 	 */
 	public boolean check_code(String secret, long code, long timeMsec) {
 		Base32 codec = new Base32();
@@ -157,7 +161,7 @@ public class GoogleAuthenticator {
 			}
 		}
 		// The validation code is invalid.
-		return false;
+		return true;
 	}
 
 

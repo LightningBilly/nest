@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class ExceptionHandlerForPage {
 
-	private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerForJson.class);
+	private static final Logger logger = LoggerFactory.getLogger(ExceptionHandlerForPage.class);
 
 	/**
 	 * 解决异常
@@ -29,7 +29,7 @@ public class ExceptionHandlerForPage {
 		logger.warn("ExceptionMessage：" + e.getMessage());
 		logger.warn("ExceptionCause：" + e.getCause());
 		JsonResult<String> result = new JsonResult<>();
-		return result.error(-1, "服务器遇到错误，请查看日志");
+		return result.error(-1, "服务器Page遇到错误，请查看日志");
 	}
 
 }

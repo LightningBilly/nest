@@ -15,7 +15,7 @@
 <body>
 
 <div class="container mt-3">
-	<form action="doLogin" method="post">
+	<form action="admin/doLogin" method="post">
 		<input type="hidden" name="tokenLogin" id="tokenLogin" value="${tokenLogin}">
 		<div class="form-group">
 			<label for="phone">手机号：</label>
@@ -26,7 +26,7 @@
 			<input type="text" class="form-control" id="google" name="google" placeholder="谷歌验证">
 		</div>
 		<div id="yanzhengma-parent" class="form-group">
-			<label for="veri">验证码: <img onclick="refreshimage(this)" src="veri"/> </label>
+			<label for="veri">验证码: <img onclick="refreshimage(this)" src="admin/veri"/> </label>
 			<input type="text" class="form-control" id="veri" name="veri" placeholder="验证码">
 		</div>
 		<button type="submit" class="btn btn-primary">登录</button>

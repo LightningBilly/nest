@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -57,13 +58,13 @@ public class AdminController {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
 		// 本地测试，不需要登陆
-		if (LOCALHOST_SET.contains(servletName)) {
-			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-			return "admin/index";
-		}
+//		if (LOCALHOST_SET.contains(servletName)) {
+//			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+//			return "admin/index";
+//		}
 
 		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "admin/login";
+			return "admin/login?token=" + Config.TOKEN_URL;
 		}
 		return "admin/index";
 	}
@@ -138,7 +139,7 @@ public class AdminController {
 	 * @param google     谷歌
 	 * @return {@link String}
 	 */
-	@RequestMapping("/doLogin")
+	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
 	public String doLogin(String tokenLogin, String veri, String phone, Long google) {
 		String veri1 = (String) session.getAttribute("veri");
 		if (!Config.TOKEN_DO_LOGIN.equals(tokenLogin) || !Config.TOKEN_PHONE.equals(phone)
@@ -252,7 +253,7 @@ public class AdminController {
 		return "正在爬取中，请查看日志";
 	}
 
-	private boolean isLogin(){
+	private boolean isLogin() {
 
 		return false;
 	}

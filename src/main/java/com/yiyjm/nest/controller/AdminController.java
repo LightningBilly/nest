@@ -57,11 +57,11 @@ public class AdminController {
 	public String index(HttpServletRequest request) {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
-		// 本地测试，不需要登陆
-//		if (LOCALHOST_SET.contains(servletName)) {
-//			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-//			return "admin/index";
-//		}
+//		 本地测试，不需要登陆
+		if (LOCALHOST_SET.contains(servletName)) {
+			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+			return "admin/index";
+		}
 
 		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
 			return "admin/login?token=" + Config.TOKEN_URL;
@@ -105,9 +105,9 @@ public class AdminController {
 	 */
 	@RequestMapping("/image")
 	public String image(ModelMap map, Integer page) {
-//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-//			return "redirect:/";
-//		}
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+			return "redirect:/";
+		}
 
 		if (page == null || page < 1) {
 			page = 1;
@@ -181,9 +181,9 @@ public class AdminController {
 	 */
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
-//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-//			return "redirect:/";
-//		}
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+			return "redirect:/";
+		}
 		int bid2 = blogService.gainBlogId(bid);
 		if (bid == null || bid < 0) {
 			return "redirect:blog?bid=" + bid2;
@@ -236,9 +236,9 @@ public class AdminController {
 	@RequestMapping("/crawler")
 	@ResponseBody
 	public String crawler(String kind) {
-//		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-//			return "请先登录";
-//		}
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+			return "请先登录";
+		}
 
 		if (kind == null) {
 			return "类型错误";
@@ -251,11 +251,6 @@ public class AdminController {
 		}
 
 		return "正在爬取中，请查看日志";
-	}
-
-	private boolean isLogin() {
-
-		return false;
 	}
 
 	@Autowired

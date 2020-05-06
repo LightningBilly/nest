@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 	<meta name="Keywords" content="张向阳,吕静,Jonny.Chang,Dilys.Lyu"/>
 	<meta name="description" content="张向阳,吕静,Jonny.Chang,Dilys.Lyu"/>
-    <title></title>
+    <title>魔方相册</title>
     <link rel="stylesheet" type="text/css" href="index.css" />
     <style type="text/css">
         body{

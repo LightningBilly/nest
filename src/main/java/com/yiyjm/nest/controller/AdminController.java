@@ -8,6 +8,7 @@ import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.AdminService;
 import com.yiyjm.nest.service.BlogService;
 import com.yiyjm.nest.service.LocalImgService;
+import com.yiyjm.nest.util.GoogleAuthenticator;
 import com.yiyjm.nest.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,15 +71,15 @@ public class AdminController {
 	/**
 	 * 登录
 	 *
-	 * @param map   地图
+	 * @param map   map
 	 * @param token 令牌
 	 * @return {@link String}
 	 */
 	@RequestMapping("/login")
 	public String login(ModelMap map, String token) {
-//		if (token == null || !token.equals(Config.TOKEN_URL)) {
-//			return "redirect:/";
-//		}
+		if (token == null || !token.equals(Config.TOKEN_URL)) {
+			return "redirect:/";
+		}
 		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
 		return "admin/login";
 	}
@@ -140,18 +141,18 @@ public class AdminController {
 	@RequestMapping("/doLogin")
 	public String doLogin(String tokenLogin, String veri, String phone, Long google) {
 		String veri1 = (String) session.getAttribute("veri");
-//		if (!Config.TOKEN_DO_LOGIN.equals(tokenLogin) || !Config.TOKEN_PHONE.equals(phone)
-//				|| veri == null || !veri.equalsIgnoreCase(veri1) || google == null) {
-//			return "redirect:/";
-//		}
+		if (!Config.TOKEN_DO_LOGIN.equals(tokenLogin) || !Config.TOKEN_PHONE.equals(phone)
+				|| veri == null || !veri.equalsIgnoreCase(veri1) || google == null) {
+			return "redirect:/";
+		}
 
-//		GoogleAuthenticator ga = new GoogleAuthenticator();
-//		boolean r = ga.check_code(Config.TOKEN_GOOGLE_KEY, google, System.currentTimeMillis());
-//		if (!r) {
-//			return "redirect:/";
-//		}
+		GoogleAuthenticator ga = new GoogleAuthenticator();
+		boolean r = ga.check_code(Config.TOKEN_GOOGLE_KEY, google, System.currentTimeMillis());
+		if (!r) {
+			return "redirect:/";
+		}
 
-//		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
 		return "redirect:/admin";
 	}
 
@@ -249,6 +250,11 @@ public class AdminController {
 		}
 
 		return "正在爬取中，请查看日志";
+	}
+
+	private boolean isLogin(){
+
+		return false;
 	}
 
 	@Autowired

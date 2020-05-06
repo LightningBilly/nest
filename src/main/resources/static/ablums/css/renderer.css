@@ -1,5 +1,5 @@
 body {
-	background: url('../img/background.jpg');
+	background: url('images/ipresenter/background.jpg');
 }
 
 a {
@@ -106,21 +106,21 @@ div#ipresenter div.step img {
 	float: left;
 	width: 50px;
 	height: 44px;
-	background: url('../img/slider-controls.png') no-repeat;
+	background: url('images/ipresenter/slider-controls.png') no-repeat;
 }
 
 .ipresenter-controlNav a.ipresenter-controlNextNav {
 	float: left;
 	width: 50px;
 	height: 44px;
-	background: url('../img/slider-controls.png') no-repeat -50px 0px;
+	background: url('images/ipresenter/slider-controls.png') no-repeat -50px 0px;
 }
 
 .ipresenter-controlNav div.ipresenter-items {
 	float: left;
 	padding: 0px 10px 0px 10px;
 	height: 44px;
-	background: url('../img/nav-bg.png');
+	background: url('images/ipresenter/nav-bg.png');
 }
 
 .ipresenter-controlNav div.ipresenter-items ul {
@@ -137,7 +137,7 @@ div#ipresenter div.step img {
 	float: left;
 	width: 11px;
 	height: 12px;
-	background: url('../img/bullets.png') no-repeat;
+	background: url('images/ipresenter/bullets.png') no-repeat;
 	margin: 3px;
 	margin-top: 16px;
 	line-height: 0px;
@@ -150,7 +150,7 @@ div#ipresenter div.step img {
 .ipresenter-controlNav div.ipresenter-items div.ipresenter-tooltip {
 	display: none;
 	position: absolute;
-	background: url('../img/tooltip.png') no-repeat;
+	background: url('images/ipresenter/tooltip.png') no-repeat;
 	width: 124px;
 	height: 90px;
 	bottom: 30px;

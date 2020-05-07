@@ -55,12 +55,12 @@ public class LocalImgServiceImpl implements LocalImgService {
 		if (bid < 0) {
 			folder = Config.LOCAL_FILE_ROOT_PATH + Config.LOCAL_PHOTOS_FOLDER;
 		}
-//		/* 用户鉴权 */
-//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-//			logger.error("上传错误：管理员token错误");
-//			resultMap.put("message", "上传错误：管理员token错误");
-//			return resultMap;
-//		}
+		/* 用户鉴权 */
+		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+			logger.error("上传错误：管理员token错误");
+			resultMap.put("message", "上传错误：管理员token错误");
+			return resultMap;
+		}
 		/* 是否为有效文件 */
 		if (file == null || file.isEmpty()) {
 			logger.error("上传错误：文件为空");

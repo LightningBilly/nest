@@ -174,9 +174,6 @@ public class AdminController {
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
 		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
-			return "redirect:/";
-		}
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
 			return "admin/login";
 		}
 		int bid2 = blogService.gainBlogId(bid);

@@ -41,6 +41,6 @@ public class BlogController {
 	@RequestMapping("/update")
 	@ResponseBody
 	public JsonResult<String> update(Blog blog) {
-		return blogService.update(blog, session.getAttribute("admin"));
+		return blogService.update(blog, session.getAttribute("loginSessionId"));
 	}
 }

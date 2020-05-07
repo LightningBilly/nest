@@ -4,11 +4,12 @@ import com.yiyjm.nest.common.CommonConstants;
 import com.yiyjm.nest.config.Config;
 import com.yiyjm.nest.config.CrawlerCsdn;
 import com.yiyjm.nest.config.CrawlerDytt;
+import com.yiyjm.nest.dao.UserDao;
 import com.yiyjm.nest.entity.Image;
+import com.yiyjm.nest.entity.User;
 import com.yiyjm.nest.service.AdminService;
 import com.yiyjm.nest.service.BlogService;
 import com.yiyjm.nest.service.LocalImgService;
-import com.yiyjm.nest.util.GoogleAuthenticator;
 import com.yiyjm.nest.util.ImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,26 +46,29 @@ public class AdminController {
 	private LocalImgService localImgService;
 	private BlogService blogService;
 	private HttpSession session;
+	private UserDao userDao;
 	private static final Set<String> LOCALHOST_SET = Stream.of("127.0.0.1", "localhost").collect(Collectors.toSet());
 
 	/**
-	 * 指数
+	 * 后台首页
+	 * 判断是否需要登录，如果需要登录，则跳转登录页面，否则进入首页
 	 *
-	 * @param request 请求
+	 * @param request HttpServletRequest
 	 * @return {@link String}
 	 */
 	@RequestMapping({"/index.html", "/", ""})
-	public String index(HttpServletRequest request) {
+	public String index(HttpServletRequest request, ModelMap modelMap) {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
 //		 本地测试，不需要登陆
 		if (LOCALHOST_SET.contains(servletName)) {
-			session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
+			session.setAttribute(CommonConstants.LOGIN_SESSION_ID, Config.TOKEN_DO_LOGIN);
 			return "admin/index";
 		}
 
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "admin/login?token=" + Config.TOKEN_URL;
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
+			modelMap.put("loginSessionId", Config.TOKEN_DO_LOGIN);
+			return "admin/login";
 		}
 		return "admin/index";
 	}
@@ -72,28 +76,57 @@ public class AdminController {
 	/**
 	 * 登录
 	 *
-	 * @param map   map
-	 * @param token 令牌
+	 * @param map map
 	 * @return {@link String}
 	 */
 	@RequestMapping("/login")
-	public String login(ModelMap map, String token) {
-		if (token == null || !token.equals(Config.TOKEN_URL)) {
+	public String loginPage(ModelMap map) {
+		// 如果已经登录，则直接返回后台首页
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
 			return "redirect:/";
 		}
-		map.put("tokenLogin", Config.TOKEN_DO_LOGIN);
-		return "admin/login";
+		map.put("loginSessionId", Config.TOKEN_DO_LOGIN);
+		return "redirect:/";
+	}
+
+
+	/**
+	 * 做登录
+	 *
+	 * @param loginSessionId 登录会话id
+	 * @param veri           真实
+	 * @param username       用户名
+	 * @param passwd         passwd
+	 * @return {@link String}
+	 */
+	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
+	public String doLogin(String loginSessionId, String veri, String username, String passwd) {
+		// 获取session中的验证码
+		String storeVeri = (String) session.getAttribute("veri");
+		User user = userDao.queryByName(username);
+		// 验证信息 如果不正确，重新返回登录页面
+		if (!Config.TOKEN_DO_LOGIN.equals(loginSessionId) || !storeVeri.equalsIgnoreCase(veri) || !user.getPasswd().equals(passwd)) {
+			return "redirect:/admin/login";
+		}
+		// 验证通过 设置 session
+		session.setAttribute(CommonConstants.LOGIN_SESSION_ID, Config.TOKEN_DO_LOGIN);
+		session.setMaxInactiveInterval(300 * 60);
+		return "redirect:/admin";
 	}
 
 	/**
-	 * 注销
+	 * 生成验证码
 	 *
-	 * @return {@link String}
+	 * @param request  请求
+	 * @param response 响应
 	 */
-	@RequestMapping("/logout")
-	public String logout() {
-		session.removeAttribute(CommonConstants.ADMIN);
-		return "redirect:/";
+	@RequestMapping("/veri")
+	public void veri(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			ImageUtil.getVeri(request, response, "veri");
+		} catch (IOException e) {
+			logger.info("生成验证码错误");
+		}
 	}
 
 	/**
@@ -105,8 +138,9 @@ public class AdminController {
 	 */
 	@RequestMapping("/image")
 	public String image(ModelMap map, Integer page) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
-			return "redirect:/";
+
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
+			return "admin/login";
 		}
 
 		if (page == null || page < 1) {
@@ -131,48 +165,6 @@ public class AdminController {
 	}
 
 	/**
-	 * 做登录
-	 *
-	 * @param tokenLogin 登录令牌
-	 * @param veri       真实
-	 * @param phone      电话
-	 * @param google     谷歌
-	 * @return {@link String}
-	 */
-	@RequestMapping(value = "/doLogin", method = RequestMethod.POST)
-	public String doLogin(String tokenLogin, String veri, String phone, Long google) {
-		String veri1 = (String) session.getAttribute("veri");
-		if (!Config.TOKEN_DO_LOGIN.equals(tokenLogin) || !Config.TOKEN_PHONE.equals(phone)
-				|| veri == null || !veri.equalsIgnoreCase(veri1) || google == null) {
-			return "redirect:/";
-		}
-
-		GoogleAuthenticator ga = new GoogleAuthenticator();
-		boolean r = ga.check_code(Config.TOKEN_GOOGLE_KEY, google, System.currentTimeMillis());
-		if (!r) {
-			return "redirect:/";
-		}
-
-		session.setAttribute(CommonConstants.ADMIN, Config.TOKEN_DO_LOGIN);
-		return "redirect:/admin";
-	}
-
-	/**
-	 * 生成验证码
-	 *
-	 * @param request  请求
-	 * @param response 响应
-	 */
-	@RequestMapping("/veri")
-	public void veri(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			ImageUtil.getVeri(request, response, "veri");
-		} catch (IOException e) {
-			logger.info("生成验证码错误");
-		}
-	}
-
-	/**
 	 * 根据 bid 编辑博客，bid 没有，创建新的博客
 	 *
 	 * @param map 地图
@@ -181,8 +173,11 @@ public class AdminController {
 	 */
 	@RequestMapping("/blog")
 	public String blog(ModelMap map, Integer bid) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
 			return "redirect:/";
+		}
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
+			return "admin/login";
 		}
 		int bid2 = blogService.gainBlogId(bid);
 		if (bid == null || bid < 0) {
@@ -212,7 +207,7 @@ public class AdminController {
 	@RequestMapping("/uploadImage")
 	@ResponseBody
 	public Map<String, Object> uploadImage(@RequestParam("editormd-image-file") MultipartFile file, Integer bid) {
-		return localImgService.uploadImage(file, bid, session.getAttribute(CommonConstants.ADMIN));
+		return localImgService.uploadImage(file, bid, session.getAttribute(CommonConstants.LOGIN_SESSION_ID));
 	}
 
 	/**
@@ -224,7 +219,7 @@ public class AdminController {
 	@RequestMapping("/deleteImage")
 	@ResponseBody
 	public String deleteImage(Integer iid) {
-		return localImgService.deleteImage(iid, session.getAttribute(CommonConstants.ADMIN));
+		return localImgService.deleteImage(iid, session.getAttribute(CommonConstants.LOGIN_SESSION_ID));
 	}
 
 	/**
@@ -236,7 +231,7 @@ public class AdminController {
 	@RequestMapping("/crawler")
 	@ResponseBody
 	public String crawler(String kind) {
-		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.ADMIN))) {
+		if (!Config.TOKEN_DO_LOGIN.equals(session.getAttribute(CommonConstants.LOGIN_SESSION_ID))) {
 			return "请先登录";
 		}
 
@@ -251,6 +246,17 @@ public class AdminController {
 		}
 
 		return "正在爬取中，请查看日志";
+	}
+
+	/**
+	 * 注销
+	 *
+	 * @return {@link String}
+	 */
+	@RequestMapping("/logout")
+	public String logout() {
+		session.removeAttribute(CommonConstants.LOGIN_SESSION_ID);
+		return "redirect:/";
 	}
 
 	@Autowired
@@ -268,7 +274,14 @@ public class AdminController {
 		this.session = session;
 	}
 
+	@Autowired
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	@Autowired
 	public void setLocalImgService(LocalImgService localImgService) {
 		this.localImgService = localImgService;
 	}
+
 }

@@ -21,7 +21,7 @@ public interface UserDao {
 	 * @return int
 	 */
 	@Options(useGeneratedKeys = true, keyProperty = "uid", keyColumn = "uid")
-	@Insert("INSERT INTO user(name, passwd, nick_name, sex, auth, create_time, update_time) VALUES (#{name}, #{passwd}, #{nickName}, #{sex}, #{auth}, new Date(), new Date())")
+	@Insert("INSERT INTO user(name, passwd, email, phone_number nick_name, sex, auth, create_time, update_time) VALUES (#{name}, #{passwd}, #{email}, #{phoneNumber}, #{nickName}, #{sex}, #{auth}, new Date(), new Date())")
 	int insertUser(User user);
 
 	/**
@@ -30,7 +30,7 @@ public interface UserDao {
 	 * @param user 用户
 	 * @return int
 	 */
-	@Update("UPDATE user set name=#{name}, passwd=#{passwd}, nick_name=#{nickName}, sex=#{sex}, auth=#{auth}, update_time=new Date() WHERE uid=#{uid}")
+	@Update("UPDATE user set name=#{name}, passwd=#{passwd}, email=#{email}, phone_number=#{phoneNumber}, nick_name=#{nickName}, sex=#{sex}, auth=#{auth}, update_time=new Date() WHERE uid=#{uid}")
 	int updateUser(User user);
 
 	/**
@@ -40,7 +40,7 @@ public interface UserDao {
 	 * @return int
 	 */
 	@Select("select * from user where uid=#{uid}")
-	int queryUserByUid(Integer uid);
+	User queryUserByUid(@Param("uid") int uid);
 
 	/**
 	 * 按名称查询
@@ -49,7 +49,7 @@ public interface UserDao {
 	 * @return int
 	 */
 	@Select("select * from user where name=#{name}")
-	int queryByName(String name);
+	User queryByName(@Param("name") String name);
 
 	/**
 	 * 通过uid删除用户
@@ -58,7 +58,7 @@ public interface UserDao {
 	 * @return int
 	 */
 	@Delete("DELETE FROM user WHERE uid=#{uid};")
-	int deleteUserByUid(Integer uid);
+	int deleteUserByUid(@Param("uid") int uid);
 
 	/**
 	 * 计算所有用户

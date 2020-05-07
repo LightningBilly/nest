@@ -13,10 +13,9 @@ public class CommonConstants {
 	public static final String BLAN = "";
 	public static final String CSDN = "csdn";
 	public static final String DYTT = "dytt";
-	public static final String ADMIN = "admin";
+	public static final String LOGIN_SESSION_ID = "loginSessionId";
 	public static final String CSDN_URL = "https://blog.csdn.net/";
 	public static final String DYTT_URL = "http://www.ygdy8.net/";
-	public static final String IMG_PRIFIX = "images/";
 	public static final String BASE_CHAR = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ";
 
 

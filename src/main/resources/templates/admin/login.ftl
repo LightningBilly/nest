@@ -15,7 +15,7 @@
 <body>
 <div class="container mt-3" style="width: 520px">
 	<form action="admin/doLogin" method="post" style="padding: 54px;border-style: double">
-		<input type="hidden" name="tokenLogin" id="tokenLogin" value="${tokenLogin}">
+		<input type="hidden" name="loginSessionId" id="loginSessionId" value="${loginSessionId}">
 		<div class="form-group">
 			<label for="username">用户名：</label>
 			<input type="text" class="form-control" id="username" name="username" placeholder="用户名/邮箱">

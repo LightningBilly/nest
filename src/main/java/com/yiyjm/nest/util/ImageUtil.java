@@ -15,10 +15,9 @@ import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Random;
-import java.util.logging.Logger;
 
 /**
- * 图像跑龙套
+ * 图像照片工具类
  *
  * @author Jonny.Chang
  * @date 2020/05/05

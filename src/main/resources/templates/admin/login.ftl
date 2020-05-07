@@ -13,23 +13,24 @@
 </head>
 
 <body>
-
-<div class="container mt-3">
-	<form action="admin/doLogin" method="post">
+<div class="container mt-3" style="width: 520px">
+	<form action="admin/doLogin" method="post" style="padding: 54px;border-style: double">
 		<input type="hidden" name="tokenLogin" id="tokenLogin" value="${tokenLogin}">
 		<div class="form-group">
-			<label for="phone">手机号：</label>
-			<input type="password" class="form-control" id="phone" name="phone" placeholder="手机号">
+			<label for="username">用户名：</label>
+			<input type="text" class="form-control" id="username" name="username" placeholder="用户名/邮箱">
 		</div>
 		<div class="form-group">
-			<label for="google">谷歌验证：</label>
-			<input type="text" class="form-control" id="google" name="google" placeholder="谷歌验证">
+			<label for="passwd">密码：</label>
+			<input type="password" class="form-control" id="passwd" name="passwd" placeholder="密码">
 		</div>
 		<div id="yanzhengma-parent" class="form-group">
 			<label for="veri">验证码: <img onclick="refreshimage(this)" src="admin/veri"/> </label>
 			<input type="text" class="form-control" id="veri" name="veri" placeholder="验证码">
 		</div>
-		<button type="submit" class="btn btn-primary">登录</button>
+		<div>
+			<button type="submit" class="btn btn-primary" style="float: right">登录</button>
+		</div>
 	</form>
 </div>
 

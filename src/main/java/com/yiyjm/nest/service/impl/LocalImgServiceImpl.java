@@ -131,10 +131,10 @@ public class LocalImgServiceImpl implements LocalImgService {
 
 	@Override
 	public String deleteImage(Integer iid, Object adminToken) {
-//		// 用户鉴权
-//		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
-//			return "删除失败：您并未拥有删除权限。";
-//		}
+		// 用户鉴权
+		if (!Config.TOKEN_DO_LOGIN.equals(adminToken)) {
+			return "删除失败：您并未拥有删除权限。";
+		}
 		/* 查询处理 */
 		Image image = imageDao.queryImage(iid);
 		if (image == null || image.getName() == null) {

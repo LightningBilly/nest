@@ -1,11 +1,11 @@
 package com.yiyjm.nest.service.impl;
 
 import com.yiyjm.nest.config.Config;
+import com.yiyjm.nest.config.ConfigI;
 import com.yiyjm.nest.dao.ImageDao;
 import com.yiyjm.nest.entity.Image;
 import com.yiyjm.nest.service.LocalImgService;
 import com.yiyjm.nest.util.ImageUtil;
-import com.yiyjm.nest.util.OssImageUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,9 +95,10 @@ public class LocalImgServiceImpl implements LocalImgService {
 		}
 		// 获取新的文件名，无后缀
 		String fileName = ImageUtil.getNameByTime();
+		String lastFileName;
 		// 如果是动图，直接上传，否则压缩成jpg后上传
 		if (extension.equalsIgnoreCase(GIF)) {
-			fileName = folder + fileName + GIF;
+			lastFileName = folder + fileName + GIF;
 			try {
 				uploadLocalImage(file.getInputStream(), new File(fileName));
 			} catch (IOException e) {
@@ -106,6 +107,7 @@ public class LocalImgServiceImpl implements LocalImgService {
 				return resultMap;
 			}
 		} else {
+			lastFileName = fileName + JPG;
 			fileName += JPG;
 			localFile = new File(folder + fileName);
 			try {
@@ -118,14 +120,22 @@ public class LocalImgServiceImpl implements LocalImgService {
 		}
 		/* 对数据库进行插入操作 */
 		Image image = new Image();
-		image.setName(fileName);
+		image.setName(lastFileName);
+		if (bid < 0) {
+			image.setName(Config.LOCAL_PHOTOS_FOLDER + lastFileName);
+		} else {
+			image.setName(Config.LOCAL_BLOG_FOLDER + lastFileName);
+		}
 		image.setBid(bid);
 		image.setPubtime(new Timestamp(System.currentTimeMillis()));
 		imageDao.insertImage(image);
 		resultMap.put("success", 1);
 		resultMap.put("message", "上传成功");
-		resultMap.put("url", OssImageUtil.getAliOssUrl(fileName));
-
+		if (bid < 0) {
+			resultMap.put("url", ConfigI.LOCAL_URL_PREFIX + Config.LOCAL_PHOTOS_FOLDER + lastFileName);
+		} else {
+			resultMap.put("url", ConfigI.LOCAL_URL_PREFIX + Config.LOCAL_BLOG_FOLDER + lastFileName);
+		}
 		return resultMap;
 	}
 

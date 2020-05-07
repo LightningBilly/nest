@@ -113,44 +113,44 @@
 	<#--		<div class="row">-->
 	<#--			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">-->
 	<#--				<div class="card">-->
-	<#--					<a href="//yiyjm.com/static/storys/record/index.html" target="_blank">-->
+	<#--					<a href="//static.yiyjm.com/storys/record/index.html" target="_blank">-->
 	<#--						<img class="img-thumbnail rounded card-img-top" src="image/index/5.jpg" alt="不灵不灵">-->
 	<#--					</a>-->
 	<#--					<div class="card-body">-->
-	<#--						<a href="//yiyjm.com/static/storys/record/index.html" target="_blank"-->
+	<#--						<a href="//static.yiyjm.com/storys/record/index.html" target="_blank"-->
 	<#--						   class="btn btn-sm btn-link text-muted">Time of Love</a>-->
 	<#--					</div>-->
 	<#--				</div>-->
 	<#--			</div>-->
 	<#--			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">-->
 	<#--				<div class="card">-->
-	<#--					<a href="//yiyjm.com/static/storys/code/170520.html" target="_blank">-->
+	<#--					<a href="//static.yiyjm.com/storys/code/170520.html" target="_blank">-->
 	<#--						<img class="img-thumbnail rounded card-img-top" src="image/index/6.jpg" alt="不灵不灵">-->
 	<#--					</a>-->
 	<#--					<div class="card-body">-->
-	<#--						<a href="//yiyjm.com/static/storys/code/170520.html" target="_blank"-->
+	<#--						<a href="//static.yiyjm.com/storys/code/170520.html" target="_blank"-->
 	<#--						   class="btn btn-sm btn-link text-muted">Word of Love</a>-->
 	<#--					</div>-->
 	<#--				</div>-->
 	<#--			</div>-->
 	<#--			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">-->
 	<#--				<div class="card">-->
-	<#--					<a href="//yiyjm.com/static/storys/newYear/index.html" target="_blank">-->
+	<#--					<a href="//static.yiyjm.com/storys/newYear/index.html" target="_blank">-->
 	<#--						<img class="img-thumbnail rounded card-img-top" src="image/index/7.jpg" alt="不灵不灵">-->
 	<#--					</a>-->
 	<#--					<div class="card-body">-->
-	<#--						<a href="//yiyjm.com/static/storys/newYear/index.html" target="_blank"-->
+	<#--						<a href="//static.yiyjm.com/storys/newYear/index.html" target="_blank"-->
 	<#--						   class="btn btn-sm btn-link text-muted">Years of Love</a>-->
 	<#--					</div>-->
 	<#--				</div>-->
 	<#--			</div>-->
 	<#--			<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3">-->
 	<#--				<div class="card">-->
-	<#--					<a href="//yiyjm.com/static/storys/valentine/index.html" target="_blank">-->
+	<#--					<a href="//static.yiyjm.com/storys/valentine/index.html" target="_blank">-->
 	<#--						<img class="img-thumbnail rounded card-img-top" src="image/index/8.jpg" alt="不灵不灵">-->
 	<#--					</a>-->
 	<#--					<div class="card-body">-->
-	<#--						<a href="//yiyjm.com/static/storys/valentine/index.html" target="_blank"-->
+	<#--						<a href="//static.yiyjm.com/storys/valentine/index.html" target="_blank"-->
 	<#--						   class="btn btn-sm btn-link text-muted">Lover of Love</a>-->
 	<#--					</div>-->
 	<#--				</div>-->

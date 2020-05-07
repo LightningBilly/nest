@@ -105,7 +105,8 @@ public class AdminController {
 		String storeVeri = (String) session.getAttribute("veri");
 		User user = userDao.queryByName(username);
 		// 验证信息 如果不正确，重新返回登录页面
-		if (!Config.TOKEN_DO_LOGIN.equals(loginSessionId) || !storeVeri.equalsIgnoreCase(veri) || !user.getPasswd().equals(passwd)) {
+//		if (!Config.TOKEN_DO_LOGIN.equals(loginSessionId) || !storeVeri.equalsIgnoreCase(veri) || !user.getPasswd().equals(passwd)) {
+		if (!Config.TOKEN_DO_LOGIN.equals(loginSessionId) || !user.getPasswd().equals(passwd)) {
 			return "redirect:/admin/login";
 		}
 		// 验证通过 设置 session

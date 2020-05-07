@@ -60,7 +60,7 @@ public class AdminController {
 	public String index(HttpServletRequest request, ModelMap modelMap) {
 		String servletName = request.getServerName();
 		logger.info("servletName：" + servletName);
-//		 本地测试，不需要登陆
+		// 本地测试，不需要登陆
 		if (LOCALHOST_SET.contains(servletName)) {
 			session.setAttribute(CommonConstants.LOGIN_SESSION_ID, Config.TOKEN_DO_LOGIN);
 			return "admin/index";
@@ -86,7 +86,7 @@ public class AdminController {
 			return "redirect:/";
 		}
 		map.put("loginSessionId", Config.TOKEN_DO_LOGIN);
-		return "redirect:/";
+		return "admin/index";
 	}
 
 

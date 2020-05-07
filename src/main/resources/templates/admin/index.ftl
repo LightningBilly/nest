@@ -18,16 +18,16 @@
 <div class="container mt-3">
 	<button class="btn btn-primary" onclick="crawler('csdn')">爬取博客</button>
 	<button class="btn btn-primary" onclick="crawler('dytt')">爬取电影</button>
-	<a class="btn btn-warning" href="admin/logout">安全退出</a>
+	<a class="btn btn-warning" href="/admin/logout">安全退出</a>
 
 	<hr/>
 
-	<h4>开发者文档</h4>
-	<a target="_blank" href="http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html">bootstrap4 文档</a>
-	<br/>
-	<a target="_blank" href="http://www.runoob.com/jquery/jquery-tutorial.html">jquery3.2.1 文档</a>
-	<br/>
-	<a target="_blank" href="https://help.aliyun.com/document_detail/32008.html">阿里云 oss 文档</a>
+	<#--	<h4>开发者文档</h4>-->
+	<#--	<a target="_blank" href="http://www.runoob.com/bootstrap4/bootstrap4-tutorial.html">bootstrap4 文档</a>-->
+	<#--	<br/>-->
+	<#--	<a target="_blank" href="http://www.runoob.com/jquery/jquery-tutorial.html">jquery3.2.1 文档</a>-->
+	<#--	<br/>-->
+	<#--	<a target="_blank" href="https://help.aliyun.com/document_detail/32008.html">阿里云 oss 文档</a>-->
 
 </div>
 

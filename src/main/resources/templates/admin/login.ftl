@@ -14,7 +14,7 @@
 
 <body>
 <div class="container mt-3" style="width: 520px">
-	<form action="admin/doLogin" method="post" style="padding: 54px;border-style: double">
+	<form action="/admin/doLogin" method="post" style="padding: 54px;border-style: double">
 		<input type="hidden" name="loginSessionId" id="loginSessionId" value="${loginSessionId}">
 		<div class="form-group">
 			<label for="username">用户名：</label>
@@ -25,7 +25,8 @@
 			<input type="password" class="form-control" id="passwd" name="passwd" placeholder="密码">
 		</div>
 		<div id="yanzhengma-parent" class="form-group">
-			<label for="veri">验证码: <img onclick="refreshimage(this)" src="admin/veri"/> </label>
+			<label for="veri" style="width: 100%">验证码: <img onclick="refreshimage(this)" src="/admin/veri"/> <span
+						style="float: right"> 点击图片重新加载</span></label>
 			<input type="text" class="form-control" id="veri" name="veri" placeholder="验证码">
 		</div>
 		<div>

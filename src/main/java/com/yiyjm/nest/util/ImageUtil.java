@@ -116,8 +116,8 @@ public class ImageUtil {
 		int height = 30;
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		Graphics g = bi.getGraphics();
+		BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics g = bufferedImage.getGraphics();
 		// backgroud
 		g.setColor(new Color(249, 249, 249));
 		g.fillRect(0, 0, width, height);
@@ -139,7 +139,7 @@ public class ImageUtil {
 		response.setDateHeader("expries", -1);
 		response.setHeader("Cache-Control", "no-cache");
 		response.setHeader("Pragma", "no-cache");
-		ImageIO.write(bi, "jpg", response.getOutputStream());
+		ImageIO.write(bufferedImage, "jpg", response.getOutputStream());
 	}
 
 	/**

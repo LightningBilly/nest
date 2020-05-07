@@ -25,7 +25,7 @@
 			<input type="password" class="form-control" id="passwd" name="passwd" placeholder="密码">
 		</div>
 		<div id="yanzhengma-parent" class="form-group">
-			<label for="veri" style="width: 100%">验证码: <img onclick="refreshimage(this)" src="/admin/veri"/> <span
+			<label for="veri" style="width: 100%">验证码: <img onclick="refreshimage(this)" src="veri"/> <span
 						style="float: right"> 点击图片重新加载</span></label>
 			<input type="text" class="form-control" id="veri" name="veri" placeholder="验证码">
 		</div>

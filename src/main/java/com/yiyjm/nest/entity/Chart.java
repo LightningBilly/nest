@@ -12,7 +12,7 @@ public class Chart {
 	private Integer num;
 
 	/**
-	 * 得到的名字
+	 * getName
 	 *
 	 * @return {@link String}
 	 */
@@ -21,9 +21,9 @@ public class Chart {
 	}
 
 	/**
-	 * 集名称
+	 * setName
 	 *
-	 * @param name 的名字
+	 * @param name 名字
 	 */
 	public void setName(String name) {
 		this.name = name;
